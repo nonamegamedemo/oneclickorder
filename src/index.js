@@ -1,13 +1,9 @@
 'use strict';
-import Vue from 'vue/dist/vue.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {MainContainer} from './main-container';
+import mainSass from './sass/main.sass';
 
-var test = ()=>{
-    var demo = new Vue({
-        el: '#demo',
-        data: {
-            content: 'hello'
-        }
-    })
-}
-
-test();
+ReactDOM.render( < MainContainer / > ,
+    document.getElementById('mainContainer')
+);
