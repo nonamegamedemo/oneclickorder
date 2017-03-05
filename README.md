@@ -7,6 +7,9 @@ npm install webpack-dev-server -g
 npm install
 ```
 
-###Using ```webpack``` to build file 
+###打包
+使用 ```npm run build``` 来build项目
+开发阶段可以使用 ```npm run watch``` 来监听文件的修改，当文件修改后会自动进行打包操作
 
-###Using ```webpack-dev-server``` to start a server 
+###运行
+使用 ```npm run start``` 开启服务，通过对应端口可以访问网页结果
