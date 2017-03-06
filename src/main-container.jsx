@@ -6,8 +6,7 @@ export class MainContainer extends Component {
     render() {
         return (
             <div>
-                Hello World7
-                <Button bsStyle="primary">test button</Button>
+                {this.props.children}
             </div>
         );
     }
