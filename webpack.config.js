@@ -11,6 +11,7 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     entry: './src/index.js',
     output: {
+        publicPath: '/',
         path: path.resolve(__dirname + '/dist'),
         filename: 'build.js'
     },
@@ -55,6 +56,13 @@ module.exports = {
         })
     ],
     devServer: {
-        contentBase: path.join(__dirname, "dist")
+        contentBase: path.join(__dirname, "dist"),
+        historyApiFallback: {
+            index: '/index.html',
+            rewrites: [
+                {from: /^\/$/, to: '/index.html'},
+                {from: /^.*(!=\.(html|js|css|png|jpg|gif|jpeg|mp3|mp4))$/, to: '/index.html'}
+            ]
+        }
     }
 };

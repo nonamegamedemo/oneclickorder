@@ -12,6 +12,12 @@ export class ToursRecommendContainer extends Component {
                 <p>
                     <Link to="/orders">订单列表</Link>
                 </p>
+                <p>
+                    <Link to="/tours/123">进入游记123</Link>
+                </p>
+                <p>
+                    <Link to="/createOrder">创建订单</Link>
+                </p>
             </div>
         );
     }
