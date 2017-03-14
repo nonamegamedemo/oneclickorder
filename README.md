@@ -19,9 +19,9 @@ npm install
 页面 | 开发 | 进度
 ---|---|---
 游记列表 | lyx | todo
-游记详情 |  |
+游记详情 | wry | todo
 一键下单页 | zr | doing
-机票列表 |  |
-酒店列表 |  |
-订单列表 |  |
-订单详情 |  |
+机票列表 | lq | todo
+酒店列表 | lq | todo
+订单列表 | hd | todo
+订单详情 | zr | todo
