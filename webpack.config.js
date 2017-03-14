@@ -37,11 +37,8 @@ module.exports = {
     plugins: [
         extractSass,
         new CopyWebpackPlugin([{
-            from: 'node_modules/bootstrap/dist/css',
+            from: 'node_modules/semantic-ui-css/semantic.css',
             to: 'css/'
-        }, {
-            from: 'node_modules/bootstrap/dist/fonts',
-            to: 'fonts/'
         }]),
 
         new HtmlWebpackPlugin({
@@ -51,7 +48,7 @@ module.exports = {
         }),
 
         new HtmlWebpackIncludeAssetsPlugin({
-            assets: ['css/bootstrap.min.css', 'css/bootstrap-theme.min.css'],
+            assets: ['css/semantic.css'],
             append: false
         })
     ],

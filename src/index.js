@@ -1,16 +1,16 @@
 'use strict';
-import React                                      from 'react';
-import ReactDOM                                   from 'react-dom';
-import {MainContainer}                            from './main-container';
-import {TourContainer}                            from './pages/tour-container';
-import {ToursContainer}                           from './pages/tours-container';
-import {ToursRecommendContainer}                  from './pages/tours-recommend-container';
-import {OrdersContainer}                          from './pages/orders-container';
-import CreateOrderContainer                     from './pages/create-order-container';
-import mainSass                                   from './sass/main.sass';
+import React                                                     from 'react';
+import ReactDOM                                                  from 'react-dom';
+import {MainContainer}                                           from './main-container';
+import {TourContainer}                                           from './pages/tour-container';
+import {ToursContainer}                                          from './pages/tours-container';
+import {ToursRecommendContainer}                                 from './pages/tours-recommend-container';
+import {OrdersContainer}                                         from './pages/orders-container';
+import CreateOrderContainer                                      from './pages/create-order-container';
+import mainSass                                                  from './sass/main.sass';
 import {Router, Route, IndexRoute, browserHistory, RouterContext}from 'react-router';
-import {Provider}                                 from 'react-redux';
-import store                                      from './common/store';
+import {Provider}                                                from 'react-redux';
+import store                                                     from './common/store';
 
 ReactDOM.render( (
         <Provider store={store}>

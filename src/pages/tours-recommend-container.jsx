@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
+import { Button, Menu } from 'semantic-ui-react';
 
 export class ToursRecommendContainer extends Component {
     render() {
         return (
             <div>
                 <h1>推荐游记</h1>
-                <p>
-                    <Link to="/tours">游记</Link>
-                </p>
-                <p>
-                    <Link to="/orders">订单列表</Link>
-                </p>
-                <p>
-                    <Link to="/tours/123">进入游记123</Link>
-                </p>
-                <p>
-                    <Link to="/createOrder">创建订单</Link>
-                </p>
+                <Menu>
+                    <Menu.Item>
+                        <Link to="/tours"><Button primary>游记</Button></Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Link to="/orders"><Button primary>订单列表</Button></Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Link to="/tours/123"><Button primary>进入游记123</Button></Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Link to="/createOrder"><Button primary>创建订单</Button></Link>
+                    </Menu.Item>
+                </Menu>
             </div>
         );
     }
