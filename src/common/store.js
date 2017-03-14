@@ -12,9 +12,8 @@ const reducers = combineReducers({
     tourMap: tourMapReducer
 });
 
-const store = createStore(reducers);
-// const store = createStore(reducers, undefined, compose(autoRehydrate));
+const store = createStore(reducers, undefined, compose(autoRehydrate()));
 
-// persistStore(store);
+persistStore(store);
 
 export default store;

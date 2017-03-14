@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {CreateOrder} from './create-order';
-// import orderData from '../mocha-data/order.json';
+import orderData from '../mocha-data/order.js';
+import * as _ from 'lodash';
+// format data's time to Date type
+import {getRoute} from '../helpers/order-helpers.js';
 
 const mapStateToProps = (state)=>{
     // let tourId = state.createOrder.tourId;
     // let tour = state.tours[tourId];
-    let route = [
-        {'type': 'flight'}
-    ];
+    let orders = orderData.orders;
+    let firstOrder = _.first(orders);
+    let route = getRoute(firstOrder);
+    // let route = [
+    //     {'type': 'flight'}
+    // ];
 
     // return {tour, route};
     return {route};

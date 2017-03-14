@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-// import format from 'format'
+import dateFormat from 'dateformat';
 
 export class CreateOrderFlight extends Component {
     render() {
-        // <p>航班号：{this.props.content.flightNo}</p>
-        // <p>出发时间：{format(this.props.content.departure, 'yyyy-MM-dd HH:mm:ss')}</p>
-        // <p>到达时间: {format(this.props.content.departure, 'yyyy-MM-dd HH:mm:ss')}</p>
         return (
             <div>
-                <p>航班</p>
+                <h6>飞机</h6>
+                <p>航班号：{this.props.content.flightNo}</p>
+                <p>出发时间：{dateFormat(this.props.content.departure, 'yyyy-mm-dd HH:MM:ss')}</p>
+                <p>到达时间: {dateFormat(this.props.content.arrive, 'yyyy-mm-dd HH:MM:ss')}</p>
             </div>
         );
     }

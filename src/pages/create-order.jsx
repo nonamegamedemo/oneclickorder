@@ -22,6 +22,10 @@ export class CreateOrder extends Component {
     }
 }
 
+CreateOrder.propTypes = {
+    route: React.PropTypes.array.isRequired
+}
+
 // CreateOrder.contextTypes = {
 //     route: React.PropTypes.object
 // }

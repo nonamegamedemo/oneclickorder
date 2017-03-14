@@ -1,4 +1,4 @@
-{
+module.exports = {
     "orders": [
         {
             "orderId": 1,
@@ -8,6 +8,7 @@
             "flight": [
                 {
                     "id": "1",
+                    "type": "flight",
                     "flightNo": "fx002",
                     "from": "Shanghai",
                     "to": "Sydney",
@@ -18,6 +19,7 @@
                 },
                 {
                     "id": "2",
+                    "type": "flight",
                     "flightNo": "fx002",
                     "from": "Sydney",
                     "to": "Shanghai",
@@ -30,6 +32,7 @@
             "train": [
                 {
                     "id": "1",
+                    "type": "train",
                     "trainNo": "D2001",
                     "from": "Sydney",
                     "to": "Melbourne",
@@ -40,6 +43,7 @@
                 },
                 {
                     "id": "2",
+                    "type": "train",
                     "trainNo": "D2001",
                     "from": "Melbourne",
                     "to": "Sydney",
@@ -52,27 +56,29 @@
             "hotel": [
                 {
                     "id": "1",
+                    "type": "hotel",
                     "hotel": "Sydney Mock Hotel1",
                     "city": "Sydney",
                     "address": "No2 street",
-                    "from": "2017-08-17",
-                    "to": "2017-08-20"
+                    "checkIn": "2017-08-17 14:00:00",
+                    "checkOut": "2017-08-20 12:00:00"
                 },
                 {
                     "id": "2",
+                    "type": "hotel",
                     "hotel": "Melbourne Mock Hotel1",
                     "city": "Melbourne",
                     "address": "No1 street",
-                    "from": "2017-08-20",
-                    "to": "2017-08-22"
+                    "checkIn": "2017-08-20 14:00:00",
+                    "checkOut": "2017-08-22 12:00:00"
                 },
                 {
                     "id": "3",
                     "hotel": "Sydney Mock Hotel2",
                     "city": "Sydney",
                     "address": "No2 street",
-                    "from": "2017-08-22",
-                    "to": "2017-08-24"
+                    "checkIn": "2017-08-22 14:00:00",
+                    "checkOut": "2017-08-24 12:00:00"
                 }
             ]
         }
