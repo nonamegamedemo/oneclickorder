@@ -36,10 +36,16 @@ module.exports = {
     },
     plugins: [
         extractSass,
-        new CopyWebpackPlugin([{
-            from: 'node_modules/semantic-ui-css/semantic.css',
-            to: 'css/'
-        }]),
+        new CopyWebpackPlugin([
+            {
+                from: 'node_modules/semantic-ui-css/semantic.css',
+                to: 'css/'
+            },
+            {
+                from: 'node_modules/semantic-ui-css/themes/',
+                to: 'css/themes/'
+            }
+        ]),
 
         new HtmlWebpackPlugin({
             title: '测试Demo',
@@ -52,6 +58,7 @@ module.exports = {
             append: false
         })
     ],
+    devtool: 'source-map',
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         historyApiFallback: {
