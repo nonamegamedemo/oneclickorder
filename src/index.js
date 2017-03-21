@@ -7,6 +7,7 @@ import {ToursContainer}                                          from './pages/t
 import {ToursRecommendContainer}                                 from './pages/tours-recommend-container';
 import {OrdersContainer}                                         from './pages/orders-container';
 import CreateOrderContainer                                      from './pages/create-order-container';
+import {FlightListContainer}                                     from './pages/flight-list-container';
 import mainSass                                                  from './sass/main.sass';
 import {Router, Route, IndexRoute, browserHistory, RouterContext}from 'react-router';
 import {Provider}                                                from 'react-redux';
@@ -21,6 +22,7 @@ ReactDOM.render( (
                     <Route path="tours/:tourid" component={TourContainer} />
                     <Route path="orders" component={OrdersContainer} />
                     <Route path="createOrder" component={CreateOrderContainer} />
+                    <Route path="flightList/:fromCity/:toCity/:fromTime" component={FlightListContainer} />
                 </Route>
             </Router>
         </Provider>

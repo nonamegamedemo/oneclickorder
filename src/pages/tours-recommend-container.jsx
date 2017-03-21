@@ -20,6 +20,9 @@ export class ToursRecommendContainer extends Component {
                     <Menu.Item>
                         <Link to="/createOrder"><Button primary>创建订单</Button></Link>
                     </Menu.Item>
+                    <Menu.Item>
+                        <Link to="/flightList/上海/香港/2017-03-12"><Button primary>机票列表</Button></Link>
+                    </Menu.Item>
                 </Menu>
             </div>
         );
