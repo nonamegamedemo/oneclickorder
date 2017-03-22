@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import flightListData from '../mocha-data/flight.js';
+import hotelListData from '../mocha-data/hotel.js';
 
 
-export class FlightListContainer extends Component {
+export class HotelListContainer extends Component {
     render() {
-    	const listData = flightListData.flightList;
+    	const listData = hotelListData.hotelList;
         return (
-            <CardList listData={listData} fromCity={this.props.params.fromCity} toCity={this.props.params.toCity} fromTime={this.props.params.fromTime}/>
+            <CardList listData={listData} fromCity={this.props.params.fromCity} fromTime={this.props.params.fromTime}/>
         );
     }
 }
@@ -18,34 +18,28 @@ class CardList extends Component {
 
 	render() {
 		var fromCity = this.props.fromCity;
-		var toCity = this.props.toCity;
 		var fromTime = this.props.fromTime;
 		const card = (
 			<div >
-				<h1>{fromTime} 至 {toCity} 的机票</h1>
-				{this.props.listData[fromCity][toCity].map((data)=>
+				<h1>{fromCity} 在 {fromTime} 的酒店</h1>
+				{this.props.listData[fromCity].map((data)=>
 					<div style={cardStyle} width="1000">
 						<table>
 							<tr>
-								<th width="150"><h1>{data.company}</h1></th>
-								<th width="150"><h3>{data.flightNo}</h3></th>
-								<table width="900"> 
+								<th><img src={data.pic}/></th>
+								<th width="300">
+								<table>
 									<tr>
-										<td><h2>{data.fromAirport}</h2></td>
-										<td></td>
-										<td><h2>{data.toAirport}</h2></td>
+										<td><h2>{data.name}</h2></td>
 									</tr>
 									<tr>
-										<td></td>
-										<td>===========></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><h3>{data.fromTime}</h3></td>
-										<td></td>
-										<td><h3>{data.toTime}</h3></td>
+										<td><p>{data.address}</p></td>
 									</tr>
 								</table>
+								</th>
+								<th width="100">星级：{data.level}</th>
+								<th width="100">评价：{data.score}</th>
+								<th width="100"><h2>{data.price}</h2></th>
 								<th>预定</th>
 							</tr>
 						</table>					
