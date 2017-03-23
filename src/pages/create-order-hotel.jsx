@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
-import dateFormat from 'dateformat';
+import React, { Component }from 'react';
+import dateFormat          from 'dateformat';
+import {Step, Icon}        from 'semantic-ui-react';
 
 export class CreateOrderHotel extends Component {
     render() {
+        let checkIn = dateFormat(this.props.content.checkIn, 'yyyy-mm-dd HH:MM:ss');
+        let checkOut = dateFormat(this.props.content.checkOut, 'yyyy-mm-dd HH:MM:ss');
         return (
-            <div>
-                <h6>酒店</h6>
-                <p>酒店号：{this.props.content.hotel}</p>
-                <p>入住时间：{dateFormat(this.props.content.checkIn, 'yyyy-mm-dd')}</p>
-                <p>离店时间: {dateFormat(this.props.content.checkOut, 'yyyy-mm-dd')}</p>
-            </div>
+            <Step>
+                <Icon name='hotel' />
+                <Step.Content>
+                    <Step.Title>酒店：{this.props.content.hotel}</Step.Title>
+                    <Step.Description>入住时间 {checkIn} <br /> 离店时间{checkOut}</Step.Description>
+                </Step.Content>
+            </Step>
         );
     }
 }
