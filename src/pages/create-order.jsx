@@ -1,29 +1,28 @@
-import React, { Component } from 'react';
-import {CreateOrderFlight} from './create-order-flight';
-import {CreateOrderHotel} from './create-order-hotel';
-import {CreateOrderTrain} from './create-order-train';
+import React, { Component }from 'react';
+import {CreateOrderOverview} from './create-order-overview';
+import {CreateOrderDetail} from './create-order-detail';
+import {Container, Icon, Header}       from 'semantic-ui-react';
 
 export class CreateOrder extends Component {
     render() {
         return (
-            <div>
-                {this.props.route.map((content, idx)=>{
-                    switch(content.type){
-                        case 'flight': 
-                            return <CreateOrderFlight content={content} key={idx} />
-                        case 'hotel':
-                            return <CreateOrderHotel content={content} key={idx} />
-                        case 'train':
-                            return <CreateOrderTrain content={content} key={idx} />
-                    }
-                })}
-            </div>
+            <Container>
+                <Header as='h2' icon textAlign='center'>
+                    <Icon name='calendar' circular></Icon>
+                    <Header.Content>
+                        Travel Route
+                    </Header.Content>
+                </Header>
+                <CreateOrderOverview route={this.props.route} />
+                <CreateOrderDetail route={this.props.route} detail={this.props.detail} />
+            </Container>
         );
     }
 }
 
 CreateOrder.propTypes = {
-    route: React.PropTypes.array.isRequired
+    route: React.PropTypes.array.isRequired,
+    detail: React.PropTypes.object.isRequired
 }
 
 // CreateOrder.contextTypes = {

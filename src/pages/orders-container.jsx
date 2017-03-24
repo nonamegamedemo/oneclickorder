@@ -12,14 +12,14 @@ export class OrdersContainer extends Component {
 
 class OrderList extends Component{
 	_handleClick() {
-		alert('go to order detail ');
+		alert('continue to submit order');
 	}
 
 	render(){
 		const orders = (
-			<div >
-			 <h1>订单列表</h1>
-			 <div style={ordersStyle}>
+			<div style ={commonStyle} >	
+			 <h1>订单列表</h1>		
+			 <div style={ordersStyle}>			     
 				 <tabel>
 		 			<thead>
 		                <tr>
@@ -49,17 +49,15 @@ class OrderList extends Component{
 							<li>
 								<h3>
 									<label></label>
-									<span width="220px;">{data.orderNumberDes}
+									<span width="300px;">订单号：
 		   								<a href={data.orderDetailsUrl}  target="_blank">{data.orderId}</a>
-		       						 </span>
-		       						 &nbsp;&nbsp;&nbsp;
-		       						 <span >    {data.orderDateDes}{data.orderDate}</span>
+		       						 </span>		       					
 								</h3>
 								<table>
 									<tbody>
 										<tr>
 											<td width="280px;">
-												<a href={data.orderTitleUrl}  target="_blank">{data.orderTitle}  </a>
+												<a href={data.orderTitleUrl}  target="_blank">{data.from} travel to {data.to}   </a>
 											</td>
 
 											<td width="180px;">  {data.orderBizType}  </td>
@@ -83,12 +81,11 @@ class OrderList extends Component{
 
 											<td width="60px;"></td>			
 
-											<td width="180px;">
-												<p>{data.orderStatus}</p>
-											    <p><a href={data.orderDetailsUrl}  target="_blank">{data.orderDetailsDes}</a></p>
+											<td width="180px;">		
+											    <p><a href={data.orderDetailsUrl}  target="_blank">订单详情</a></p>
 											</td>
 											<td width="180px;">
-											    <p onClick={this._handleClick}>{data.orderOption}</p>
+											    <p onClick={this._handleClick}><a href={data.orderOptionUrl}>{data.orderOption}</a></p>
 											</td>
 
 										</tr>
@@ -111,7 +108,9 @@ class OrderList extends Component{
 
 }
 
-
+const commonStyle ={
+	color:" #000",	
+};
 
 const ordersStyle = {
 	width: "100%",
