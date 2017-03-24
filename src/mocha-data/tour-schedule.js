@@ -157,7 +157,7 @@ module.exports = {
                     },{
                         "type":"viewspot",
                         "place": "米拉之家"
-                    }，{
+                    },{
                         "type":"viewspot",
                         "place": "巴特罗之家"
                     },{
@@ -172,10 +172,10 @@ module.exports = {
                     },{
                         "type":"viewspot",
                         "place": "古埃尔公园"
-                    }，{
+                    },{
                         "type":"viewspot",
                         "place": "加泰罗尼亚广场"
-                    }，{
+                    },{
                         "type":"viewspot",
                         "place": "哥特区"
                     },{
@@ -197,6 +197,132 @@ module.exports = {
                     }
                 ]
             ]
-        }
+        },
+        "3383581": {
+            "totalDayCount":9,
+            "budget":7000,
+            "with":"朋友",
+            "scheduleList":[
+                [
+                    {
+                        "type":"flight",
+                        "timeQuantum": "pm",
+                        "from": "上海",
+                        "to": "北京"
+                    }
+                ],
+                [
+                    {
+                        "type":"flight",
+                        "timeQuantum": "am",
+                        "from": "北京",
+                        "to": "伊尔库茨克"
+                    },{
+                        "type":"viewspot",
+                        "place": "基洛夫广场"
+                    },{
+                        "type":"viewspot",
+                        "place": "安加拉河"
+                    },{
+                        "type":"viewspot",
+                        "name": "凯旋门"
+                    },{
+                        "type":"hotel",
+                        "name": "伊尔库特酒店(Hotel Irkut)"
+                    }
+                ],
+                [
+                    {
+                        "type":"car",
+                        "timeQuantum": "am",
+                        "from": "伊尔库茨克",
+                        "to": "奥利洪岛"
+                    },{
+                        "type":"viewspot",
+                        "place": "萨满岩石日落"
+                    },{
+                        "type":"hotel",
+                        "name": "漢酒店 Baykal Khan Hotel Olkhon"
+                    }
+                ],
+                [
+                    {
+                        "type":"viewspot",
+                        "place": "奥利洪岛北线"
+                    },{
+                        "type":"hotel",
+                        "name": "漢酒店 Baykal Khan Hotel Olkhon"
+                    }
+                ],
+                [
+                    {
+                        "type":"viewspot",
+                        "place": "奥利洪岛南线"
+                    },{
+                        "type":"hotel",
+                        "name": "漢酒店 Baykal Khan Hotel Olkhon"
+                    }
+                ],
+                [
+                    {
+                        "type":"car",
+                        "timeQuantum": "am",
+                        "from": "胡日尔小镇",
+                        "to": "伊尔库茨克"
+                    }
+                ],
+                [
+                    {
+                        "type":"car",
+                        "timeQuantum": "am",
+                        "from": "伊尔库茨克",
+                        "to": "利斯特维扬卡小镇"
+                    },{
+                        "type":"viewspot",
+                        "place": "海洋博物馆"
+                    },{
+                        "type":"hotel",
+                        "name": "加文白卡拉旅馆 Gavan Baikala Guest House"
+                    }
+                ],
+                [
+                    {
+                        "type":"car",
+                        "timeQuantum": "am",
+                        "from": "利斯特维扬卡小镇",
+                        "to": "伊尔库茨克"
+                    },{
+                        "type":"viewspot",
+                        "place": "马克思大街"
+                    },{
+                        "type":"viewspot",
+                        "place": "列宁路"
+                    },{
+                        "type":"viewspot",
+                        "place": "列宁纪念碑"
+                    },{
+                        "type":"hotel",
+                        "name": "伊尔库特酒店(Hotel Irkut)"
+                    }
+                ],
+                [
+                    {
+                        "type":"viewspot",
+                        "place": "喀山圣母大教堂"
+                    },{
+                        "type":"viewspot",
+                        "place": "主显节大教堂"
+                    },{
+                        "type":"viewspot",
+                        "place": "安加拉河"
+                    },{
+                        "type":"flight",
+                        "timeQuantum": "pm",
+                        "from": "伊尔库茨克",
+                        "to": "北京"
+                    }
+                ]
+            ]
+        },
     }
 }
