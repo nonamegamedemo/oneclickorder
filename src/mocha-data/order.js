@@ -5,6 +5,8 @@ module.exports = {
             "from": "Shanghai",
             "to": "Australia",
             "tour": "1",
+            "totalPrice": "10000",
+            "passengers": ['tester'],
             "destinations": [
                 {
                     "id": "1",

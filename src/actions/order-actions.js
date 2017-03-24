@@ -1,6 +1,6 @@
 const SAVE_ORDER = 'saveOrder';
 
-export function createOrder(order) {
+export function saveOrder(order) {
     return {
         type: SAVE_ORDER,
         order
