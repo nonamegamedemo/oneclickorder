@@ -15,6 +15,7 @@ export function createOrderReducer(state = {}, action) {
 }
 
 function saveOrder(state, action) {
-    state.slice().push(action.order);
-    return state;
+    let newState = state.slice();
+    newState.push(action.order);
+    return newState;
 }

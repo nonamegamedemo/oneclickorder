@@ -8,28 +8,22 @@ import {saveOrder} from '../actions/order-actions.js';
 import {getRoute, getDetailGroupOfDate} from '../helpers/order-helpers.js';
 import { browserHistory } from 'react-router';
 
+let firstOrder;
 const mapStateToProps = (state)=>{
     // let tourId = state.createOrder.tourId;
     // let tour = state.tours[tourId];
     let orders = orderData.orders;
-    let firstOrder =_.cloneDeep(_.first(orders));
+    firstOrder =_.cloneDeep(_.first(orders));
     let route = getRoute(firstOrder);
     let detail = getDetailGroupOfDate(firstOrder);
-    console.log(detail);
     
-    // let route = [
-    //     {'type': 'flight'}
-    // ];
-
-    // return {tour, route};
     return {route, detail, orderData: firstOrder};
 }
 
 const mapDispatchToProps = (dispatch)=>{
     return {
-        onSaveClick: (order)=>{
-            console.log('click save order');
-            dispatch(saveOrder(order));
+        onSaveClick: ()=>{
+            dispatch(saveOrder(firstOrder));
             browserHistory.push('/orders');
         }
     };
