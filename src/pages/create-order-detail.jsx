@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Table, Menu, Icon}   from 'semantic-ui-react';
+import {Container, Table, Menu, Icon, Popup, Button}   from 'semantic-ui-react';
 import _ from 'lodash';
 
 export class CreateOrderDetail extends Component {
@@ -29,7 +29,12 @@ export class CreateOrderDetail extends Component {
             let data = column[rowNum];
             let content = data.content;
             let icon = data.icon;
-            return <Table.Cell key={`col${columnAmount}`}>{this._renderIcon(icon)}{content}</Table.Cell>
+            return <Popup
+                trigger={<Table.Cell key={`col${columnAmount}`}>{this._renderIcon(icon)}{content}</Table.Cell>}
+                content={'详情内容'}
+                on='click'
+                position='top right'
+              />
         } else {
             return <Table.Cell key={`col${columnAmount}`}>&nbsp;</Table.Cell>
         }
@@ -39,15 +44,29 @@ export class CreateOrderDetail extends Component {
             return <Icon color="violet" name="marker"></Icon>
         }
 
+        let color = this._getColor(icon);
+        return <Icon color={color} name={icon} />;
+
+        // switch (icon) {
+        //     case 'hotel': 
+        //         return <Icon color="pink" name={icon} />
+        //     case 'plane':
+        //         return <Icon color="blue" name={icon} />
+        //     case 'train':
+        //         return <Icon color="olive" name={icon} />
+        // }
+    }
+    _getColor(icon) {
         switch (icon) {
             case 'hotel': 
-                return <Icon color="pink" name={icon} />
+                return 'pink';
             case 'plane':
-                return <Icon color="blue" name={icon} />
+                return 'blue';
             case 'train':
-                return <Icon color="olive" name={icon} />
+                return 'olive';
         }
-        
+
+        return 'black';
     }
     _genTableBodyColumns(sortedDates, detail) {
         return sortedDates.map(date => this._genTableBodyColumn(detail[date]));

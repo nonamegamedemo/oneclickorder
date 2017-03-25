@@ -2,19 +2,11 @@ import React, { Component } from 'react';
 import orderListData from '../mocha-data/order-list.js';
 import {HeaderPart} from '../components/header';
 import {connect} from 'react-redux';
-
-// export class OrdersContainer extends Component {
-//     render() {
-//     	const listData = orderListData.orderList;
-//         return (
-//             <OrderList listData={listData}/>
-//         );
-//     }
-// }
+import {Container, Table} from 'semantic-ui-react';
 
 const mapStateToProps = (state)=>
 {
-	console.log(state.orders);
+    console.log(state.orders);
     return{ orders:state.orders};
 }
 
@@ -32,73 +24,47 @@ const mapDispatchToProps = (dispatch)=>{
 
 
 class OrderList extends Component{
-	_handleClick() {
-		alert('continue to submit order');
-	}
+    _handleClick() {
+        alert('continue to submit order');
+    }
+    _renderOrders(orders) {
+        return orders.map((data, i) => {
+            return (<Table.Row key={i}>
+                    <Table.Cell>{data.id}</Table.Cell>
+                    <Table.Cell>{data.orderTitle}</Table.Cell>
+                    <Table.Cell>{data.passengers.join(' ')}</Table.Cell>
+                    <Table.Cell>{data.travelBeginTime}</Table.Cell>
+                    <Table.Cell>{data.travelEndTime} </Table.Cell>
+                    <Table.Cell>{data.totalPrice}</Table.Cell>
+                    <Table.Cell>订单详情</Table.Cell>
+                </Table.Row>);
+        });
+    }
+    render(){
+        return (
+            <Container style={commonStyle}>
+                <HeaderPart></HeaderPart>
+                <h1>订单列表</h1>
+                <Table striped>
+                    <Table.Header>
+                        <Table.Row>
+                          <Table.HeaderCell>订单号</Table.HeaderCell>
+                          <Table.HeaderCell>订单名称</Table.HeaderCell>
+                          <Table.HeaderCell>旅客</Table.HeaderCell>
+                          <Table.HeaderCell>行程开始日期</Table.HeaderCell>
+                          <Table.HeaderCell>行程结束日期</Table.HeaderCell>
+                          <Table.HeaderCell>总金额</Table.HeaderCell>
+                          <Table.HeaderCell>订单详情</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        {this._renderOrders(this.props.orders)}
+                    </Table.Body>
+                 </Table>
+            </Container>
+        );
 
-	render(){
-		const orders = (
-			<div style ={commonStyle} >	
-			 <HeaderPart></HeaderPart>						 	
-			 <h1>订单列表</h1>			
-			 <div style={ordersStyle}>			     
-				 <tabel>
-		 			<thead>
-		                <tr>
-		                 	<th width="160px;" >
-		                        <label>订单号</label>
-		                     </th>
-		                    <th width="280px;" >
-		                        <label>订单名称</label>
-		                     </th>
-		                    <th width="160px;">
-		                    	<label>类型</label>		                        
-		                    </th>
-		                    <th width="160px0px;">旅客</th>
-		                    <th width="180px;">行程开始日期</th>
-		                    <th width="180px;">行程结束日期</th>
-		                    <th width="160px;">总金额</th>		
-		                    <th width="160px;">订单状态</th>		                   
-		                </tr>
-		            </thead>
-				 </tabel>
-			  </div>
-				{this.props.orders.map((data) => 
-					<div  style={ordersStyle}>
-					     <tabel>
-		 			<thead>
-		                <tr>		              
-		                 	<th width="160px;" >
-		                        <label><a href="" target="_blank">{data.id}</a></label>
-		                     </th>
-		                    <th width="280px;" >
-		                        <label>{data.flight[0].from} travel to {data.flight[0].to}</label>
-		                     </th>
-		                    <th width="160px;">
-		                    	<label>旅游度假</label>		                        
-		                    </th>
-		                    <th width="160px;"><div>{data.passengers[0]}</div></th>
-		                    <th width="160px;">{data.travelBeginTime}</th>
-		                    <th width="180px;">{data.travelEndTime} </th>
-		                    <th width="160px;">{data.totalPrice}</th>		  
-		                    <th width="160px;"><p><a href="/createOrder"  target="_blank">订单详情</a></p></th>		                   
-		                </tr>
-		            </thead>
-				 </tabel>
-
-						
-					</div>
-					)}
-			</div>
-		);
-
-		return (
-			<div>
-				{orders}
-			</div>
-		);
-
-	}
+    }
 
 }
 
@@ -110,12 +76,12 @@ export const OrdersContainer = connect(
 
 
 const commonStyle ={
-	color:" #000",	
+    color:" #000",  
 };
 
 const ordersStyle = {
-	width: "100%",
-	border: "1px solid black",
-	margin: "10px",
+    width: "100%",
+    border: "1px solid black",
+    margin: "10px",
 };
 

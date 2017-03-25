@@ -5,7 +5,7 @@ export function createOrder(state, action) {
     let startDate = action.startDate;
 
     if (!startDate) startDate = new Date();
-    let dur = tour.totalDayCount;
+    let dur = tour.scheduleList.length;
     let schedule = tour.scheduleList;
     let endDate = new Date(+startDate)
     endDate.setDate(endDate.getDate() + dur);
