@@ -22,6 +22,7 @@ class TourContainerComp extends Component {
     constructor(props) {
         super(props);
         let now = new Date();
+        this.startDate = +new Date();
         startTime = dateformat(now, 'yyyy-mm-dd');
         this._onDateFiledChanged = this.onDateFiledChanged.bind(this);
     }
@@ -31,7 +32,7 @@ class TourContainerComp extends Component {
         console.log(tourId);
         console.log(this.startDate);
 
-        this.props.createOrder(tourId, this.startDate);
+        this.props.createOrder(tourId, new Date(this.startDate));
         // let tour = tourScheduleList['3386248'];
         // dispatch(createOrder(tour, startDate));
 
@@ -43,7 +44,7 @@ class TourContainerComp extends Component {
 	}
     onDateFiledChanged(dateString, { dateMoment, timestamp}) {
         startTime=dateString;
-        this.startDate = dateMoment.toDate();
+        this.startDate = +dateMoment.toDate();
     }
     render() {
         let tourId = this.props.params.tourid;
@@ -56,8 +57,7 @@ class TourContainerComp extends Component {
                 <DateField
                     dateFormat="YYYY-MM-DD"
                     forceValidDate={true}
-                    date={startTime}
-                    defaultValue={+new Date()}
+                    defaultValue={this.startDate}
                     showClock={false}
                     onChange={this._onDateFiledChanged}               
                 >

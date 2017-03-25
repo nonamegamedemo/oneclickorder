@@ -11,7 +11,6 @@ export class CreateOrder extends Component {
     render() {
         if (!this.props.orderData) return null;
 
-        console.log(this.props.orderData.passengers);
         return (
             <Container className='createOrderContainer'>
                 <Segment color="blue">
@@ -38,7 +37,7 @@ export class CreateOrder extends Component {
                     
                     <CreateOrderPassenger passengers={this.props.orderData.passengers} />
                     
-                    <CreateOrderController isRelax={!!this.props.orderData.isRelax} totalPrice={this.props.orderData.totalPrice} onSaveClick={this.props.onSaveClick} onRelaxChanged={this.props.onRelaxChanged}/>
+                    <CreateOrderController duration={this.props.orderData.duration} isRelax={!!this.props.orderData.isRelax} totalPrice={this.props.orderData.totalPrice} onSaveClick={this.props.onSaveClick} onRelaxChanged={this.props.onRelaxChanged}/>
                 </Segment>
             </Container>
         );

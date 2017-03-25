@@ -7,7 +7,8 @@ export function createOrder(state, action) {
     if (!startDate) startDate = new Date();
     let dur = tour.totalDayCount;
     let schedule = tour.scheduleList;
-    let endDate = startDate.setDate(startDate.getDate() + dur);
+    let endDate = new Date(+startDate)
+    endDate.setDate(endDate.getDate() + dur);
 
     let order = {}
     let trains = [];
@@ -42,6 +43,7 @@ export function createOrder(state, action) {
     order.totalPrice = "10000";
     order.passengers = ['test'];
     order.orderTitle = tour.title;
+    order.duration = dur;
     order.travelBeginTime = dateformat(startDate, 'yyyy-mm-dd HH:MM:ss');
     order.travelEndTime = dateformat(endDate, 'yyyy-mm-dd HH:MM:ss');
 
