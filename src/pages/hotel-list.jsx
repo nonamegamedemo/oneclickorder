@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import hotelListData from '../mocha-data/hotel.js';
 import { Button} from 'semantic-ui-react';
 
+import {HeaderPart} from '../components/header';
 
 export class HotelList extends Component {
 	onClick() {
@@ -30,6 +31,8 @@ class CardList extends Component {
 		var fromTime = this.props.fromTime;
 		const card = (
 			<div >
+				<HeaderPart></HeaderPart>
+				
 				<h1>{fromCity} 在 {fromTime} 的酒店</h1>
 				{this.props.listData[fromCity].map((data)=>
 					<div style={cardStyle} width="1000" key={data.hotel}>

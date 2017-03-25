@@ -5,11 +5,15 @@ import {CreateOrderPassenger} from './create-order-passenger';
 import {CreateOrderController} from './create-order-controller';
 import {Container, Icon, Header}       from 'semantic-ui-react';
 
+import {HeaderPart} from '../components/header';
+
 export class CreateOrder extends Component {
     render() {
         console.log(this.props.orderData.passengers);
         return (
             <Container className='createOrderContainer'>
+                <HeaderPart></HeaderPart>
+                
                 <Header as='h2' icon textAlign='center'>
                     <Icon name='calendar' circular></Icon>
                     <Header.Content>

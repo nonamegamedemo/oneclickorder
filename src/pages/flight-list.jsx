@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+﻿import React, { Component } from 'react';
 import flightListData from '../mocha-data/flight.js';
 import { Button} from 'semantic-ui-react';
 import {selectFlight} from '../actions/order-actions.js';
@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import * as _ from 'lodash';
 import { browserHistory } from 'react-router';
 import {Card, Icon, Header}       from 'semantic-ui-react';
+
+import {HeaderPart} from '../components/header';
 
 
 
@@ -28,6 +30,7 @@ class CardList extends Component {
 		fromTime = "2017-01-02";
 		const card = (
 			<div style={tourWrap} >
+				<HeaderPart></HeaderPart>
 				<Header as='h2' icon textAlign='center'>
                     <Icon name='plane' circular></Icon>
                     <Header.Content>
@@ -37,7 +40,6 @@ class CardList extends Component {
 						{fromTime}
     				</Header.Subheader>
                 </Header>
-
 				<Card.Group>
 					{this.props.listData[fromCity][toCity].map((data)=>
 						<Card fluid color='blue' header='Option 1' key={data.flightNo}>

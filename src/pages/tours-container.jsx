@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import tourListData from '../mocha-data/tour.js';
-import {Router, Route, IndexRoute, browserHistory, RouterContext}from 'react-router';
+import {Router, Route, IndexRoute, browserHistory, RouterContext} from 'react-router';
 
-import {ToursRecommendContainer}                                 from './tours-recommend-container';
-import {OrdersContainer}                                         from './orders-container';
+import {ToursRecommendContainer} from './tours-recommend-container';
+import {OrdersContainer} from './orders-container';
+import {HeaderPart} from '../components/header';
 
 
 export class ToursContainer extends Component {
@@ -25,17 +26,17 @@ class CardList extends Component {
 
 		const card = (
 			<div>
-				<ToursRecommendContainer></ToursRecommendContainer>
-
+				
+				<HeaderPart></HeaderPart>
 				<div style={wrap}>
 					<div style={sidebar}>
-						<h3>热门城市Top 5</h3>
-						<ul>
-							<li>上海</li>
-							<li>上海</li>
-							<li>上海</li>
-							<li>上海</li>
-							<li>上海</li>
+						<h3 style={top}>热门城市Top 5</h3>
+						<ul style={ul}>
+							<li style={li}>上海</li>
+							<li style={li}>上海</li>
+							<li style={li}>上海</li>
+							<li style={li}>上海</li>
+							<li style={li}>上海</li>
 						</ul>
 					</div>
 
@@ -43,7 +44,7 @@ class CardList extends Component {
 						{this.props.listData.map((data) => 
 							<div style={cardStyle} key={data.tourPassId}>
 								<div style={floatLeft}>
-									<div style={{position: "relative"}}>
+									<div style={{position: "relative", margin: "10px"}}>
 										<span style={cityLabelStyle}>{data.tourCity}</span>
 										<img style={imgStyle} src={data.imgURL} />
 									</div>
@@ -57,7 +58,7 @@ class CardList extends Component {
 									<div>
 										<span style={author}>{data.author}&nbsp;发布于&nbsp;{data.publicTime}</span>
 									</div>
-									<div>
+									<div style={content}>
 										<p onClick={this._handleClick}>{data.content}</p>
 									</div>
 								</div>
@@ -108,7 +109,7 @@ const cityLabelStyle = {
 };
 
 const rightContent = {
-	width: "650px",
+	width: "640px",
 	float: "right",
 };
 
@@ -127,6 +128,14 @@ const author = {
 	fontSize: "12px",
 };
 
+const content = {
+	width: "630px",
+	// background: "blue",
+	marginTop: "10px",
+	fontSize: "14px",
+	linehight: "14px",
+};
+
 const tourWrap = {
 	width: "880px",
 	height: "auto",
@@ -142,6 +151,22 @@ const sidebar = {
 	border: "1px solid #ddd",
 	float: "left",
 	margin: "10px 0px",
+};
+
+const top = {
+	fontSize: "18px",
+	padding: "5px 0px 10px 10px",
+	color: "#333333",
+};
+
+const ul = {
+	listStyle: "none",
+};
+
+const li = {
+	fontSize: "14px",
+	color: "#666666",
+	padding: "10px 10px",
 };
 
 const wrap = {

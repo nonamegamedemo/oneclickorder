@@ -1,62 +1,62 @@
 module.exports={
 	"tourList": [
 		{
-			"tourPassId": "1",
+			"tourPassId": "3386248",
 			"imgURL": "https://dimg01.c-ctrip.com/images/100a0c000000629plEE92_C_210_140.jpg",
 			"title": "暖冬出逃香港两日【一个人闲逛记】【中环 | 桥咀岛】",
 			"author": "猫猫児cathy",
 			"publicTime": "2017-01-23 17:20:00",
-            "tourCity": "香港",
-            "content": "内容，超过两行展示...，TODO",
-            "detailURL": "http://localhost:8080/tours/123"
+            "tourCity": "格拉纳达",
+            "content": "格拉纳达的午后，我们坐在高高的瞭望台边，垂着双腿，听着吉他，慵懒的看着阿宫在雪山的映衬下，由蓝变白，白又添金，最后染上红……科尔多瓦的巷子里，我们寻找着犹太教的踪迹，一个转弯竟是一座教堂，街角的尽头却又变成了穆斯林餐厅……",
+			"detailURL": "http://localhost:8080/tours/3386248",
 		},
 		{
-			"tourPassId": "2",
+			"tourPassId": "3383581",
 			"imgURL": "https://dimg01.c-ctrip.com/images/100a0c000000629plEE92_C_210_140.jpg",
 			"title": "【兔美酱在路上】两只老友窥探【澳】秘，千千【港】乐你唱我听。",
 			"author": "雯哥is兔美酱",
 			"publicTime": "2016-07-24 17:20:00",
-			"tourCity": "香港",
-			"content": "内容，超过两行展示...，TODO",
-			"detailURL": ""
+			"tourCity": "贝加尔湖",
+			"content": "先奉上一段小清新风的贝加尔湖视频，奔跑在一望无垠的白茫雪地中、触摸冰凉的蓝冰、在萨满岩石前等一场日落、夕阳前泼热水成冰、与胡日尔的狗狗结伴而行、在童话小镇利斯特维扬卡仰望星空...也许很久以后再次回顾，彷佛未曾离开。也许很久以后再次回顾，彷佛未曾离开。小视频是雍容负责全程构思、拍摄、剪辑，我负责文字、配音、出镜",
+			"detailURL": "http://localhost:8080/tours/3383581"
 		}, {
-			"tourPassId": "3",
+			"tourPassId": "3395155",
 			"imgURL": "https://dimg01.c-ctrip.com/images/100a0c000000629plEE92_C_210_140.jpg",
 			"title": "阴雨的香港，我们只为漫威而来",
 			"author": "蝈蝈小姐",
 			"publicTime": "2017-03-07 17:20:00",
-			"tourCity": "香港",
-			"content": "内容，超过两行展示...，TODO",
-			"detailURL": ""
+			"tourCity": "西藏",
+			"content": "西藏，一个离天堂很近的地方，一个充满神奇色彩的地方；那儿的天很蓝，蓝的让人心醉；那儿的天空很近，近的几乎触手可及……或许，我们都曾有过打起背包，流浪天涯的梦想。彼时学生时代，一本本关于西藏的书在同学之间互相流传着。记得书里说，那是一个冷冷的夜，主人公在纳木错的湖边数着星星；随着转经的人群，收到陌路相逢喇嘛的馈赠；或许是从那时开始吧，被西藏吸引着，虽然，于那时，西藏还仅仅只是一个符号",
+			"detailURL": "http://localhost:8080/tours/3395155"
 		},
-		{
-			"tourPassId": "4",
+{
+			"tourPassId": "33862422",
 			"imgURL": "https://dimg01.c-ctrip.com/images/100a0c000000629plEE92_C_210_140.jpg",
 			"title": "暖冬出逃香港两日【一个人闲逛记】【中环 | 桥咀岛】",
 			"author": "猫猫児cathy",
 			"publicTime": "2017-01-23 17:20:00",
-            "tourCity": "香港",
-            "content": "内容，超过两行展示...，TODO",
-            "detailURL": ""
+            "tourCity": "格拉纳达",
+            "content": "格拉纳达的午后，我们坐在高高的瞭望台边，垂着双腿，听着吉他，慵懒的看着阿宫在雪山的映衬下，由蓝变白，白又添金，最后染上红……科尔多瓦的巷子里，我们寻找着犹太教的踪迹，一个转弯竟是一座教堂，街角的尽头却又变成了穆斯林餐厅……",
+			"detailURL": "http://localhost:8080/tours/3386248",
 		},
 		{
-			"tourPassId": "5",
+			"tourPassId": "338358122",
 			"imgURL": "https://dimg01.c-ctrip.com/images/100a0c000000629plEE92_C_210_140.jpg",
 			"title": "【兔美酱在路上】两只老友窥探【澳】秘，千千【港】乐你唱我听。",
 			"author": "雯哥is兔美酱",
 			"publicTime": "2016-07-24 17:20:00",
-			"tourCity": "香港",
-			"content": "内容，超过两行展示...，TODO",
-			"detailURL": ""
+			"tourCity": "贝加尔湖",
+			"content": "先奉上一段小清新风的贝加尔湖视频，奔跑在一望无垠的白茫雪地中、触摸冰凉的蓝冰、在萨满岩石前等一场日落、夕阳前泼热水成冰、与胡日尔的狗狗结伴而行、在童话小镇利斯特维扬卡仰望星空...也许很久以后再次回顾，彷佛未曾离开。也许很久以后再次回顾，彷佛未曾离开。小视频是雍容负责全程构思、拍摄、剪辑，我负责文字、配音、出镜",
+			"detailURL": "http://localhost:8080/tours/3383581"
 		}, {
-			"tourPassId": "6",
+			"tourPassId": "339515522",
 			"imgURL": "https://dimg01.c-ctrip.com/images/100a0c000000629plEE92_C_210_140.jpg",
 			"title": "阴雨的香港，我们只为漫威而来",
 			"author": "蝈蝈小姐",
 			"publicTime": "2017-03-07 17:20:00",
-			"tourCity": "香港",
-			"content": "内容，超过两行展示...，TODO",
-			"detailURL": ""
+			"tourCity": "西藏",
+			"content": "西藏，一个离天堂很近的地方，一个充满神奇色彩的地方；那儿的天很蓝，蓝的让人心醉；那儿的天空很近，近的几乎触手可及……或许，我们都曾有过打起背包，流浪天涯的梦想。彼时学生时代，一本本关于西藏的书在同学之间互相流传着。记得书里说，那是一个冷冷的夜，主人公在纳木错的湖边数着星星；随着转经的人群，收到陌路相逢喇嘛的馈赠；或许是从那时开始吧，被西藏吸引着，虽然，于那时，西藏还仅仅只是一个符号",
+			"detailURL": "http://localhost:8080/tours/3395155"
 		},
 	]
 }
