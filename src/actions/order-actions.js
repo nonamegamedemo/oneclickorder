@@ -1,6 +1,8 @@
-const SAVE_ORDER = 'saveOrder';
-const SELECT_FLIGHT = 'selectFlight';
-const SELECT_HOTEL = "selectHotel";
+const SAVE_ORDER               = 'saveOrder';
+const CREATE_ORDER             = 'createOrder';
+const SELECT_FLIGHT            = 'selectFlight';
+const SELECT_HOTEL             = "selectHotel";
+const SWITCH_ORDER_RELAX_STATE = 'switchOrderRelaxState';
 
 export function saveOrder(order) {
     return {
@@ -21,4 +23,19 @@ export function selectHotel(hotel) {
 		type: SELECT_HOTEL,
 		hotel
 	}
+}
+
+export function switchToRelaxOrder(isRelax) {
+    return {
+        type: SWITCH_ORDER_RELAX_STATE,
+        isRelax
+    };
+}
+
+export function createOrder(tour, startDate) {
+    return {
+        type: CREATE_ORDER,
+        tour,
+        startDate
+    }
 }

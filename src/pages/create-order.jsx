@@ -9,6 +9,8 @@ import {HeaderPart} from '../components/header';
 
 export class CreateOrder extends Component {
     render() {
+        if (!this.props.orderData) return null;
+
         console.log(this.props.orderData.passengers);
         return (
             <Container className='createOrderContainer'>
@@ -23,16 +25,17 @@ export class CreateOrder extends Component {
                 <CreateOrderOverview route={this.props.route} onClickFlight={this.props.onClickFlight} />
                 <CreateOrderDetail route={this.props.route} detail={this.props.detail} />
                 <CreateOrderPassenger passengers={this.props.orderData.passengers} />
-                <CreateOrderController totalPrice={this.props.orderData.totalPrice} onSaveClick={this.props.onSaveClick} />
+                <CreateOrderController isRelax={!!this.props.orderData.isRelax} totalPrice={this.props.orderData.totalPrice} onSaveClick={this.props.onSaveClick} onRelaxChanged={this.props.onRelaxChanged}/>
             </Container>
         );
     }
 }
 
 CreateOrder.propTypes = {
-    route: React.PropTypes.array.isRequired,
-    detail: React.PropTypes.object.isRequired,
-    orderData: React.PropTypes.object.isRequired,
+    route: React.PropTypes.array,
+    detail: React.PropTypes.object,
+    orderData: React.PropTypes.object,
+    onRelaxChanged: React.PropTypes.func.isRequired,
     onClickFlight: React.PropTypes.func.isRequired,
     onSaveClick: React.PropTypes.func.isRequired
 }

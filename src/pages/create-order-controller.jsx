@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button} from 'semantic-ui-react'
+import { Button, Checkbox } from 'semantic-ui-react'
 
 export class CreateOrderController extends Component {
     constructor(props) {
@@ -7,6 +7,10 @@ export class CreateOrderController extends Component {
 
         this.state = {};
         this.onSaveClick = this._onSaveClick.bind(this);
+        this.onChange = this._onRelaxChange.bind(this);
+    }
+    _onRelaxChange(evt, {checked}) {
+        this.props.onRelaxChanged(checked);
     }
     _onSaveClick() {
         this.props.onSaveClick();
@@ -14,14 +18,22 @@ export class CreateOrderController extends Component {
     render() {
         return (
             <div className='controllersPanel'>
-                <span>价格: {this.props.totalPrice}</span>
-                <Button onClick={this.onSaveClick}>确认订单</Button>
+                <div>
+                    <span>悠闲: </span>
+                    <Checkbox checked={this.props.isRelax} toggle onChange={this.onChange} />
+                </div>
+                <div>
+                    <span>价格: {this.props.totalPrice}</span>
+                    <Button color='orange' onClick={this.onSaveClick}>确认订单</Button>
+                </div>
             </div>
         );
     }
 }
 
 CreateOrderController.PropTypes = {
+    isRelax: React.PropTypes.bool.isRequired,
+    onRelaxChanged: React.PropTypes.func.isRequired,
     totalPrice: React.PropTypes.number.isRequired,
     onSaveClick: React.PropTypes.func.isRequired
 }

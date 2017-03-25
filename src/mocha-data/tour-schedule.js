@@ -11,6 +11,14 @@ module.exports = {
                         "timeQuantum": "pm",
                         "from": "上海",
                         "to": "马拉加"
+                    }
+                ],
+                [
+                    {
+                        "type":"flight",
+                        "timeQuantum": "pm",
+                        "from": "上海",
+                        "to": "马拉加"
                     },{
                         "type":"car",
                         "timeQuantum": "pm",
@@ -243,6 +251,12 @@ module.exports = {
                         "timeQuantum": "pm",
                         "from": "上海",
                         "to": "北京"
+                    },
+                    {
+                        "type":"flight",
+                        "timeQuantum": "am",
+                        "from": "北京",
+                        "to": "伊尔库茨克"
                     }
                 ],
                 [
@@ -369,6 +383,14 @@ module.exports = {
                         "place": "安加拉河",
                         "location":"伊尔库茨克"
                     },{
+                        "type":"flight",
+                        "timeQuantum": "pm",
+                        "from": "伊尔库茨克",
+                        "to": "北京"
+                    }
+                ],
+                [
+                    {
                         "type":"flight",
                         "timeQuantum": "pm",
                         "from": "伊尔库茨克",

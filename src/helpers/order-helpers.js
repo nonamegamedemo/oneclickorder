@@ -30,9 +30,9 @@ export function getRoute(order) {
 export function getDetailGroupOfDate(order) {
     let items = getAllTransportItems(order);
     let ret = {};
-    appendDestsToGroup(order.destinations, ret);
     appendTransportsToGroup(items, ret);
     appendHotelsToGroup(order.hotel, ret);
+    appendDestsToGroup(order.destinations, ret, !!order.isRelax);
     sortDetailsCityInfos(ret);
 
     return ret;
@@ -188,30 +188,38 @@ function setTimeToEnd(date) {
 /**
  * 将目的地内容加入至分组信息中
  *
- * @param  {[type]} dests [description]
- * @param  {[type]} ret   [description]
- * @return {[type]}       [description]
+ * @param  {[type]}  dests   [description]
+ * @param  {[type]}  ret     [description]
+ * @param  {Boolean} isRelax [description]
+ * @return {[type]}          [description]
  */
-function appendDestsToGroup(dests, ret) {
+function appendDestsToGroup(dests, ret, isRelax) {
     for (let i = 0; i < dests.length; i++) {
         let dest = dests[i];
         if (!dest) continue;
-        appendDestToGroup(dest, ret);
+        appendDestToGroup(dest, ret, isRelax);
     }
 }
 
 /**
  * 将单个目的地内容加入分组信息中
  *
- * @param  {[type]} dest [description]
- * @param  {[type]} ret  [description]
- * @return {[type]}      [description]
+ * @param  {[type]}  dest    [description]
+ * @param  {[type]}  ret     [description]
+ * @param  {Boolean} isRelax [description]
+ * @return {[type]}          [description]
  */
-function appendDestToGroup(dest, ret) {
+function appendDestToGroup(dest, ret, isRelax) {
     let date = new Date(dest.date);
     let dateStr = format(date, 'yyyy-mm-dd');
 
     let record = getOrCreateRecord(dateStr, ret);
+
+    // 悠闲旅游的情况下，如果行程超过3个，则后续形成不再添加
+    if (isRelax && record.details.length >= 3) {
+        return;
+    }
+
     pushDetailToList(record, dest);
     pushCityInfos(record, dest.city, date, date, dest);
     pushDetailToCityGroup(record, dest.city, dest, date, date, dateStr);
@@ -336,7 +344,7 @@ function parseItemTimes(items) {
     let timePropKeys = ['departure', 'arrive', 'checkIn', 'checkOut'];
     items.map(item=>{
         timePropKeys.map(key=>{
-            if (item[key]) {
+            if (item[key] && (typeof item[key] === 'string')) {
                 item[key] = new Date(item[key]);
             }
         })

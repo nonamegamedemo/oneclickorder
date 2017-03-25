@@ -14,13 +14,16 @@ export class CreateOrderFlight extends Component {
     }
     render() {
         let departureDate = dateFormat(this.props.content.departure, 'yyyy-mm-dd HH:MM:ss');
-        let arriveDate = dateFormat(this.props.content.departure, 'yyyy-mm-dd HH:MM:ss');
+        let arriveDate = dateFormat(this.props.content.arrive, 'yyyy-mm-dd HH:MM:ss');
         return (
             <Step  onClick={this.handleClick}>
                 <Icon name='plane' />
                 <Step.Content>
                     <Step.Title>航班号：{this.props.content.flightNo}</Step.Title>
-                    <Step.Description>出发时间 {departureDate} <br /> 到达时间{arriveDate}</Step.Description>
+                    <Step.Description>
+                        <p>{this.props.content.from} 至 {this.props.content.to}</p>
+                        <p>出发时间 {departureDate} <br /> 到达时间{arriveDate}</p>
+                    </Step.Description>
                 </Step.Content>
             </Step>
         );
