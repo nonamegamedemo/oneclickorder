@@ -44,6 +44,10 @@ module.exports = {
             {
                 from: 'node_modules/semantic-ui-css/themes/',
                 to: 'css/themes/'
+            },
+            {
+                from: 'node_modules/react-date-picker/index.css',
+                to: 'css/'
             }
         ]),
 
@@ -54,7 +58,7 @@ module.exports = {
         }),
 
         new HtmlWebpackIncludeAssetsPlugin({
-            assets: ['css/semantic.css'],
+            assets: ['css/semantic.css','css/index.css'],
             append: false
         })
     ],
