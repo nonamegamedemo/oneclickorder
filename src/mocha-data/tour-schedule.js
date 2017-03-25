@@ -10,11 +10,6 @@ module.exports = {
                         "type":"flight",
                         "timeQuantum": "pm",
                         "from": "上海",
-                        "to": "莫斯科"
-                    },{
-                        "type":"flight",
-                        "timeQuantum": "pm",
-                        "from": "莫斯科",
                         "to": "马拉加"
                     },{
                         "type":"car",
@@ -232,11 +227,6 @@ module.exports = {
                         "type":"flight",
                         "timeQuantum": "am",
                         "from": "巴塞罗那",
-                        "to": "莫斯科"
-                    },{
-                        "type":"flight",
-                        "timeQuantum": "pm",
-                        "from": "莫斯科",
                         "to": "上海"
                     }
                 ]
@@ -456,11 +446,6 @@ module.exports = {
                         "type":"car",
                         "timeQuantum": "am",
                         "from": "日喀则",
-                        "to": "珠峰大本营"
-                    },{
-                        "type":"car",
-                        "timeQuantum": "pm",
-                        "from": "珠峰大本营",
                         "to": "定日"
                     },{
                         "type":"viewspot",
@@ -531,7 +516,7 @@ module.exports = {
                         "from": "江孜",
                         "to": "拉萨"
                     },{
-                        "type":"car",
+                        "type":"flight",
                         "timeQuantum": "am",
                         "from": "拉萨",
                         "to": "上海"
