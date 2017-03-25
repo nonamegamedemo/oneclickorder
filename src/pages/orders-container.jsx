@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import orderListData from '../mocha-data/order-list.js';
+import {HeaderPart} from '../components/header';
 
 export class OrdersContainer extends Component {
     render() {
@@ -18,7 +19,8 @@ class OrderList extends Component{
 	render(){
 		const orders = (
 			<div style ={commonStyle} >	
-			 <h1>订单列表</h1>		
+			 <HeaderPart></HeaderPart>
+			 
 			 <div style={ordersStyle}>			     
 				 <tabel>
 		 			<thead>

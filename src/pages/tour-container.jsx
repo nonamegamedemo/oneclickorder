@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { DateField, Calendar, DatePicker } from 'react-date-picker';
+import {HeaderPart} from '../components/header';
+
 export class TourContainer extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,7 @@ export class TourContainer extends Component {
         let url = "/tour-common/" + tourId + "/" + tourId + ".html";
         
         return (<div>
+            <HeaderPart></HeaderPart>
             <div style={datePickerStyle}>
                 <DateField
                     dateFormat="YYYY-MM-DD"
@@ -45,10 +48,10 @@ export class TourContainer extends Component {
 let startTime = "";
 
 const iframeStyle = {
-    width: "100%",
-    height: "1000px",
-    top: "0px",
-    position: "absolute"
+	width:"100%",
+    height:"1000px",
+    top:"60px",
+    position:"absolute"
 }
 
 const buttonStyle = {

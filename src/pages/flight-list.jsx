@@ -7,6 +7,8 @@ import * as _ from 'lodash';
 import { browserHistory } from 'react-router';
 import {Card, Icon, Header}       from 'semantic-ui-react';
 
+import {HeaderPart} from '../components/header';
+
 
 
 class CardList extends Component {
@@ -28,6 +30,7 @@ class CardList extends Component {
 		fromTime = "2017-01-02";
 		const card = (
 			<div >
+				<HeaderPart></HeaderPart>
 				<h1>{fromTime} 至 {toCity} 的机票</h1>
 				<Card.Group>
 					{this.props.listData[fromCity][toCity].map((data)=>
