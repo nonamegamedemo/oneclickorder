@@ -48,7 +48,9 @@ class TourContainerComp extends Component {
     render() {
         let tourId = this.props.params.tourid;
         let url = "/tour-common/" + tourId + "/" + tourId + ".html";
-        return (<div>
+        return (
+            
+            <div>
             <HeaderPart></HeaderPart>
             <div style={datePickerStyle}>
                 <DateField
@@ -70,7 +72,9 @@ class TourContainerComp extends Component {
                     />
                 </DateField>
             </div>
-            <button onClick={()=>{this._oneClickOrder(this.props.params.tourid)}} style={buttonStyle} className="ui orange button">一键下单</button><iframe style={iframeStyle} src={url}></iframe></div>);
+            <button onClick={()=>{this._oneClickOrder(this.props.params.tourid)}} style={buttonStyle} className="ui orange button">一键下单</button><iframe style={iframeStyle} src={url}></iframe>
+            </div>
+        );
     }
 }
 

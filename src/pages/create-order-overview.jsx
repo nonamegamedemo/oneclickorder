@@ -23,7 +23,7 @@ export class CreateOrderOverview extends Component {
     render() {
         return (
             <Container className="scroller" >
-                <Step.Group size='mini' style={{width: this.state.listWidth}}>
+                <Step.Group size='mini' style={{width: this.state.listWidth, marginBottom: "10px"}}>
                     {this.props.route.map((content, idx)=>{
                         switch(content.type){
                             case 'flight': 

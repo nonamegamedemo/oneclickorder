@@ -8,7 +8,7 @@ export class CreateOrderTrain extends Component {
         let arriveDate = dateFormat(this.props.content.departure, 'yyyy-mm-dd HH:MM:ss');
         return (
             <Step>
-                <Icon name='train' />
+                <Icon color='olive' name='train' />
                 <Step.Content>
                     <Step.Title>车次：{this.props.content.trainNo}</Step.Title>
                     <Step.Description>出发时间 {departureDate} <br /> 到达时间{arriveDate}</Step.Description>

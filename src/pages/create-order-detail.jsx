@@ -35,8 +35,19 @@ export class CreateOrderDetail extends Component {
         }
     }
     _renderIcon(icon) {
-        if (!icon) return null;
-        return <Icon name={icon} />
+        if (!icon) {
+            return <Icon color="violet" name="marker"></Icon>
+        }
+
+        switch (icon) {
+            case 'hotel': 
+                return <Icon color="pink" name={icon} />
+            case 'plane':
+                return <Icon color="blue" name={icon} />
+            case 'train':
+                return <Icon color="olive" name={icon} />
+        }
+        
     }
     _genTableBodyColumns(sortedDates, detail) {
         return sortedDates.map(date => this._genTableBodyColumn(detail[date]));

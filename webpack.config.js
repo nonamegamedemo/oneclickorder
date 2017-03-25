@@ -52,7 +52,7 @@ module.exports = {
         ]),
 
         new HtmlWebpackPlugin({
-            title: '游记下单',
+            title: '游记下单-让出行更简单',
             filename: 'index.html',
             template: 'src/index.html'
         }),
