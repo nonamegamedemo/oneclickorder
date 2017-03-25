@@ -8,7 +8,7 @@ module.exports={
 			"publicTime": "2017-01-23 17:20:00",
             "tourCity": "香港",
             "content": "内容，超过两行展示...，TODO",
-            "detailURL": ""
+            "detailURL": "http://localhost:8080/tours/123"
 		},
 		{
 			"tourPassId": "2",

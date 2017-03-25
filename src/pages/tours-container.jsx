@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import tourListData from '../mocha-data/tour.js';
+import {Router, Route, IndexRoute, browserHistory, RouterContext}from 'react-router';
+
+import {ToursRecommendContainer}                                 from './tours-recommend-container';
+import {OrdersContainer}                                         from './orders-container';
 
 
 export class ToursContainer extends Component {
@@ -12,34 +16,56 @@ export class ToursContainer extends Component {
 }
 
 class CardList extends Component {
+/*	<h1 onClick={this._handleClick}><a href={data.detailURL}>{data.title}</a></h1>
 	_handleClick() {
 		alert('go to detail page');
-	}
+	}*/
 
 	render() {
 
 		const card = (
-			<div >
-				{this.props.listData.map((data) => 
-					<div style={cardStyle} key={data.tourPassId}>
-						<div style={{position: "relative"}}>
-							<span style={cityLabelStyle}>{data.tourCity}</span>
-							<img style={imgStyle} src={data.imgURL} />
-						</div>
-						<div>
-							<div>
-								<h1 onClick={this._handleClick}>{data.title}</h1>
-							</div>
-							<div>
-								<p>{data.author}</p>
-								<p>{data.publicTime}</p>
-							</div>
-							<div>
-								<p onClick={this._handleClick}>{data.content}</p>
-							</div>
-						</div>
+			<div>
+				<ToursRecommendContainer></ToursRecommendContainer>
+
+				<div style={wrap}>
+					<div style={sidebar}>
+						<h3>热门城市Top 5</h3>
+						<ul>
+							<li>上海</li>
+							<li>上海</li>
+							<li>上海</li>
+							<li>上海</li>
+							<li>上海</li>
+						</ul>
 					</div>
-				)}
+
+					<div style={tourWrap}>
+						{this.props.listData.map((data) => 
+							<div style={cardStyle} key={data.tourPassId}>
+								<div style={floatLeft}>
+									<div style={{position: "relative"}}>
+										<span style={cityLabelStyle}>{data.tourCity}</span>
+										<img style={imgStyle} src={data.imgURL} />
+									</div>
+								</div>
+								<div style={rightContent}>
+									<div>
+										<h1 onClick={this._handleClick}>
+											<a href={data.detailURL} style={title}>{data.title}</a>
+										</h1>
+									</div>
+									<div>
+										<span style={author}>{data.author}&nbsp;发布于&nbsp;{data.publicTime}</span>
+									</div>
+									<div>
+										<p onClick={this._handleClick}>{data.content}</p>
+									</div>
+								</div>
+							</div>
+						)}
+					</div>
+				</div>
+
 			</div>
 		);
 
@@ -51,14 +77,17 @@ class CardList extends Component {
 	}
 }
 
-const floatStyle = {
+const floatLeft = {
 	float: "left"
 }
 
 const cardStyle = {
-	width: "100%",
+	width: "880xpx",
+	height: "200px",
 	border: "1px solid black",
-	margin: "10px",
+	margin: "10px 0px",
+	border: "1px solid #ddd",
+	background: 'white',
 };
 
 const imgStyle = {
@@ -78,6 +107,49 @@ const cityLabelStyle = {
 	padding: "0px 6px 0px 8px"
 };
 
+const rightContent = {
+	width: "650px",
+	float: "right",
+};
+
+const title = {
+	width: "630px",
+	fontSize: "18px",
+	color: "#00a7e1",
+	linehight: "18px",
+	whiteSpace: "nowrap",
+	overflow: "hidden",
+	textOverflow: "ellipsis",
+	padding: "0px 20px 0px 0px",
+};
+const author = {
+	color: "#999999",
+	fontSize: "12px",
+};
+
+const tourWrap = {
+	width: "880px",
+	height: "auto",
+	margin: "0 auto",
+	background: '#f2f2f2',
+	float: "right",
+};
+
+const sidebar = {
+	width: "280px",
+	height: "458px",
+	background: "white",
+	border: "1px solid #ddd",
+	float: "left",
+	margin: "10px 0px",
+};
+
+const wrap = {
+	width: "1180px",
+	height: "auto",
+	clear: "both",
+	margin: "0 auto",
+};
 /*const cityLabelAfterStyle = {
 	position: "absolute",
 	right: "-4px",
