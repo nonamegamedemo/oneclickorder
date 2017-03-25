@@ -27,29 +27,46 @@ class CardList extends Component {
 		toCity = "香港";
 		fromTime = "2017-01-02";
 		const card = (
-			<div >
-				<h1>{fromTime} 至 {toCity} 的机票</h1>
+			<div style={tourWrap} >
+				<Header as='h2' icon textAlign='center'>
+                    <Icon name='plane' circular></Icon>
+                    <Header.Content>
+                        至 {toCity} 的机票
+                    </Header.Content>
+                    <Header.Subheader>
+						{fromTime}
+    				</Header.Subheader>
+                </Header>
+
 				<Card.Group>
 					{this.props.listData[fromCity][toCity].map((data)=>
 						<Card fluid color='blue' header='Option 1' key={data.flightNo}>
-							<table>
+							<table width="100%">
 								<tr>
-									<td><Icon name='plane' size='big' color='blue'/></td>
-									<td width="150"><h1>{data.company}</h1></td>
-									<td width="150"><h3>{data.flightNo}</h3></td>
 									<td>
-										<Header as='h2' content={data.departureTerminal} subheader={data.departure} />
+					                  <Header as='h2'>
+									    <Icon name='plane' color='blue' />
+									    <Header.Content>
+									      {data.company}
+										<Header.Subheader>
+										{data.flightNo}
+										</Header.Subheader>
+									    </Header.Content>
+									  </Header>
 									</td>
-									<td>
+									<td width="25%">
+										<Header as='h2' icon="level up" content={data.departureTerminal} subheader={data.departure} />
+									</td>
+									<td width="10%">
 										<td><Icon name='long arrow right' size='huge' color='grey'/></td>
 									</td>
-									<td>
-										<Header as='h2' content={data.arrivalTerminal} subheader={data.arrive} />
+									<td width="25%">
+										<Header as='h2' icon="level down" content={data.arrivalTerminal} subheader={data.arrive} />
 									</td>
-									<td width="100"><h3>RMB: {data.price}</h3></td>
-									<td width="100"><Button onClick={()=>{this.onFlightClick(data)}}>选择</Button></td>
+									<td width="100"><Header color="orange" icon="yen" content={data.price}/></td>
+									<td width="10%"><Button color="red" onClick={()=>{this.onFlightClick(data)}}>选择</Button></td>
 								</tr>
-							</table>					
+							</table>
 						</Card>
 					)}
 				</Card.Group>
@@ -64,11 +81,13 @@ class CardList extends Component {
 	}
 }
 
-const cardStyle = {
-	width: "100%",
-	border: "1px solid black",
-	margin: "10px",
+const tourWrap = {
+	padding: "20px 100px 20px 100px",
 };
+
+const selectBtn = {
+	float: "right",
+}
 
 export class FlightList extends Component {
 	onClick() {
