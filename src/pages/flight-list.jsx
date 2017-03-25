@@ -35,11 +35,11 @@ class CardList extends Component {
 							<tr>
 								<th width="150"><h1>{data.company}</h1></th>
 								<th width="150"><h3>{data.flightNo}</h3></th>
-								<table width="900"> 
+								<table width="800"> 
 									<tr>
-										<td><h2>{data.fromAirport}</h2></td>
+										<td><h2>{data.departureTerminal}</h2></td>
 										<td></td>
-										<td><h2>{data.toAirport}</h2></td>
+										<td><h2>{data.arrivalTerminal}</h2></td>
 									</tr>
 									<tr>
 										<td></td>
@@ -47,11 +47,12 @@ class CardList extends Component {
 										<td></td>
 									</tr>
 									<tr>
-										<td><h3>{data.fromTime}</h3></td>
+										<td><h3>{data.departure}</h3></td>
 										<td></td>
-										<td><h3>{data.toTime}</h3></td>
+										<td><h3>{data.arrive}</h3></td>
 									</tr>
 								</table>
+								<th width="100"><h3>RMB: {data.price}</h3></th>
 								<th><Button onClick={()=>{this.onFlightClick(data)}}>选择</Button></th>
 							</tr>
 						</table>					
