@@ -18,16 +18,19 @@ class CardList extends Component {
         this.state = {};
         this.onFlightClick = this._onFlightClick.bind(this);
     }
-    _onFlightClick(flight) {
+    _onFlightClick(flight, fromCity, toCity, fromTime) {
+    	flight.departureTerminal = fromCity + flight.departureTerminal;
+    	flight.arrivalTerminal = toCity + flight.arrivalTerminal;
+    	flight.departure = fromTime + " " + flight.departure;
+    	flight.arrive = fromTime + " " + flight.arrive;
+    	flight.from = fromCity;
+    	flight.to = toCity;
         this.props.onFlightClick(flight);
     }
 	render() {
-		var fromCity = this.props.fromCity;
-		var toCity = this.props.toCity;
-		var fromTime = this.props.fromTime;
-		fromCity = "上海";
-		toCity = "香港";
-		fromTime = "2017-01-02";
+		let fromCity = this.props.fromCity;
+		let toCity = this.props.toCity;
+		let fromTime = this.props.fromTime;
 		const card = (
 			<div style={tourWrap} >
 				<HeaderPart></HeaderPart>
@@ -41,7 +44,7 @@ class CardList extends Component {
     				</Header.Subheader>
                 </Header>
 				<Card.Group>
-					{this.props.listData[fromCity][toCity].map((data)=>
+					{this.props.listData.map((data)=>
 						<Card fluid color='blue' header='Option 1' key={data.flightNo}>
 							<table width="100%">
 								<tr>
@@ -57,16 +60,16 @@ class CardList extends Component {
 									  </Header>
 									</td>
 									<td width="25%">
-										<Header as='h2' icon="level up" content={data.departureTerminal} subheader={data.departure} />
+										<Header as='h2' icon="level up" content={fromCity + data.departureTerminal} subheader={data.departure} />
 									</td>
 									<td width="10%">
 										<td><Icon name='long arrow right' size='huge' color='grey'/></td>
 									</td>
 									<td width="25%">
-										<Header as='h2' icon="level down" content={data.arrivalTerminal} subheader={data.arrive} />
+										<Header as='h2' icon="level down" content={toCity + data.arrivalTerminal} subheader={data.arrive} />
 									</td>
 									<td width="100"><Header color="orange" icon="yen" content={data.price}/></td>
-									<td width="10%"><Button color="red" onClick={()=>{this.onFlightClick(data)}}>选择</Button></td>
+									<td width="10%"><Button color="red" onClick={()=>{this.onFlightClick(data, this.props.fromCity, this.props.toCity, this.props.fromTime)}}>选择</Button></td>
 								</tr>
 							</table>
 						</Card>
