@@ -32,10 +32,10 @@ class OrderList extends Component{
 		                        </div>
 		                    </th>
 		                    <th width="180px;">旅客</th>
-		                    <th width="180px;">行程开始日期</th>
+		                    <th width="200px;">行程开始日期</th>
 		                    <th width="180px;">行程结束日期</th>
 		                    <th width="180px;">总金额</th>
-		                    <th width="80px;"></th>
+		                    <th width="60px;"></th>
 		                    <th width="180px;">订单状态</th>
 		                    <th width="180px;">操作</th>
 		                </tr>
@@ -56,7 +56,7 @@ class OrderList extends Component{
 								<table>
 									<tbody>
 										<tr>
-											<td width="280px;">
+											<td width="300px;">
 												<a href={data.orderTitleUrl}  target="_blank">{data.from} travel to {data.to}   </a>
 											</td>
 
@@ -81,7 +81,7 @@ class OrderList extends Component{
 
 											<td width="60px;"></td>			
 
-											<td width="180px;">		
+											<td width="200px;">		
 											    <p><a href={data.orderDetailsUrl}  target="_blank">订单详情</a></p>
 											</td>
 											<td width="180px;">
