@@ -5,7 +5,7 @@ import {selectFlight} from '../actions/order-actions.js';
 import {connect} from 'react-redux';
 import * as _ from 'lodash';
 import { browserHistory } from 'react-router';
-import {Container, Icon, Header}       from 'semantic-ui-react';
+import {Card, Icon, Header}       from 'semantic-ui-react';
 
 
 
@@ -29,35 +29,30 @@ class CardList extends Component {
 		const card = (
 			<div >
 				<h1>{fromTime} 至 {toCity} 的机票</h1>
-				{this.props.listData[fromCity][toCity].map((data)=>
-					<div style={cardStyle} width="1000" key={data.flightNo}>
-						<table>
-							<tr>
-								<th width="150"><h1>{data.company}</h1></th>
-								<th width="150"><h3>{data.flightNo}</h3></th>
-								<table width="800"> 
-									<tr>
-										<td><h2>{data.departureTerminal}</h2></td>
-										<td></td>
-										<td><h2>{data.arrivalTerminal}</h2></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>===========></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><h3>{data.departure}</h3></td>
-										<td></td>
-										<td><h3>{data.arrive}</h3></td>
-									</tr>
-								</table>
-								<th width="100"><h3>RMB: {data.price}</h3></th>
-								<th><Button onClick={()=>{this.onFlightClick(data)}}>选择</Button></th>
-							</tr>
-						</table>					
-					</div>
-				)}
+				<Card.Group>
+					{this.props.listData[fromCity][toCity].map((data)=>
+						<Card fluid color='blue' header='Option 1' key={data.flightNo}>
+							<table>
+								<tr>
+									<td><Icon name='plane' size='big' color='blue'/></td>
+									<td width="150"><h1>{data.company}</h1></td>
+									<td width="150"><h3>{data.flightNo}</h3></td>
+									<td>
+										<Header as='h2' content={data.departureTerminal} subheader={data.departure} />
+									</td>
+									<td>
+										<td><Icon name='long arrow right' size='huge' color='grey'/></td>
+									</td>
+									<td>
+										<Header as='h2' content={data.arrivalTerminal} subheader={data.arrive} />
+									</td>
+									<td width="100"><h3>RMB: {data.price}</h3></td>
+									<td width="100"><Button onClick={()=>{this.onFlightClick(data)}}>选择</Button></td>
+								</tr>
+							</table>					
+						</Card>
+					)}
+				</Card.Group>
 			</div>
 		);
 
