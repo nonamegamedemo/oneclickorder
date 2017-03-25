@@ -7,7 +7,7 @@ import {ToursContainer}                                          from './pages/t
 import {ToursRecommendContainer}                                 from './pages/tours-recommend-container';
 import {OrdersContainer}                                         from './pages/orders-container';
 import CreateOrderContainer                                      from './pages/create-order-container';
-import {FlightListContainer}                                     from './pages/flight-list-container';
+import FlightListContainer                                       from './pages/flight-list-container';
 import {HotelListContainer}                                      from './pages/hotel-list-container';
 import mainSass                                                  from './sass/main.sass';
 import {Router, Route, IndexRoute, browserHistory, RouterContext}from 'react-router';

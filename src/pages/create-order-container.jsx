@@ -10,8 +10,6 @@ import { browserHistory } from 'react-router';
 
 let firstOrder;
 const mapStateToProps = (state)=>{
-    // let tourId = state.createOrder.tourId;
-    // let tour = state.tours[tourId];
     let orders = orderData.orders;
     firstOrder =_.cloneDeep(_.first(orders));
     let route = getRoute(firstOrder);
@@ -25,6 +23,9 @@ const mapDispatchToProps = (dispatch)=>{
         onSaveClick: ()=>{
             dispatch(saveOrder(firstOrder));
             browserHistory.push('/orders');
+        },
+        onClickFlight: (flight)=>{
+            browserHistory.push('/flightList/上海/香港/2017-03-12');
         }
     };
 }

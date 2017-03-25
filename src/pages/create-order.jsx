@@ -6,9 +6,6 @@ import {CreateOrderController} from './create-order-controller';
 import {Container, Icon, Header}       from 'semantic-ui-react';
 
 export class CreateOrder extends Component {
-    onClick() {
-        this.props.onSaveClick();
-    }
     render() {
         console.log(this.props.orderData.passengers);
         return (
@@ -19,7 +16,7 @@ export class CreateOrder extends Component {
                         Travel Route
                     </Header.Content>
                 </Header>
-                <CreateOrderOverview route={this.props.route} />
+                <CreateOrderOverview route={this.props.route} onClickFlight={this.props.onClickFlight} />
                 <CreateOrderDetail route={this.props.route} detail={this.props.detail} />
                 <CreateOrderPassenger passengers={this.props.orderData.passengers} />
                 <CreateOrderController totalPrice={this.props.orderData.totalPrice} onSaveClick={this.props.onSaveClick} />
@@ -32,5 +29,6 @@ CreateOrder.propTypes = {
     route: React.PropTypes.array.isRequired,
     detail: React.PropTypes.object.isRequired,
     orderData: React.PropTypes.object.isRequired,
+    onClickFlight: React.PropTypes.func.isRequired,
     onSaveClick: React.PropTypes.func.isRequired
 }
