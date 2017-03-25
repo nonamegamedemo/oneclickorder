@@ -52,7 +52,7 @@ module.exports = {
         ]),
 
         new HtmlWebpackPlugin({
-            title: '测试Demo',
+            title: '游记下单',
             filename: 'index.html',
             template: 'src/index.html'
         }),
