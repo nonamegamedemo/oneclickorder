@@ -17,7 +17,7 @@ export class CreateOrderFlight extends Component {
         let arriveDate = dateFormat(this.props.content.arrive, 'yyyy-mm-dd HH:MM:ss');
         return (
             <Step  onClick={this.handleClick}>
-                <Icon name='plane' />
+                <Icon color='blue' name='plane' />
                 <Step.Content>
                     <Step.Title>航班号：{this.props.content.flightNo}</Step.Title>
                     <Step.Description>

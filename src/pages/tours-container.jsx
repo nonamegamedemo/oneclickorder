@@ -6,7 +6,7 @@ import {ToursRecommendContainer} from './tours-recommend-container';
 import {OrdersContainer} from './orders-container';
 import {HeaderPart} from '../components/header';
 
-import { Icon } from 'semantic-ui-react'
+import { Container, Icon, Segment } from 'semantic-ui-react'
 
 export class ToursContainer extends Component {
     render() {
@@ -71,22 +71,10 @@ class CardList extends Component {
 	render() {
 
 		const card = (
-			<div>
-				
-				<HeaderPart></HeaderPart>
-				<div style={wrap}>
-					<div style={sidebar}>
-						<h3 style={top}>热门城市Top 5</h3>
-						<ul style={ul}>
-							<li style={li}>上海</li>
-							<li style={li}>上海</li>
-							<li style={li}>上海</li>
-							<li style={li}>上海</li>
-							<li style={li}>上海</li>
-						</ul>
-					</div>
-
-					<div style={tourWrap}>
+			<Container className='createOrderContainer'>
+				<Segment color="blue">
+					<HeaderPart></HeaderPart>
+					<div>
 						{this.props.listData.map((data) => 
 							<div style={cardStyle} key={data.tourPassId}>
 								<div style={floatLeft}>
@@ -109,7 +97,7 @@ class CardList extends Component {
 									<div style={content}>
 										<p onClick={this._handleClick}>{data.content}</p>
 									</div>
-									<div style={{color: "#999999"}}>
+									<div style={{color: "#999999", marginTop: "5px"}}>
 										<EyeIcon/>{data.read}&nbsp;&nbsp;&nbsp;
 										<CommentIcon/>{data.comments}&nbsp;&nbsp;&nbsp;
 										<HeartIcon/>{data.favorite}&nbsp;&nbsp;&nbsp;
@@ -118,9 +106,8 @@ class CardList extends Component {
 							</div>
 						)}
 					</div>
-				</div>
-
-			</div>
+				</Segment>
+			</Container>
 		);
 
 		return (
@@ -162,12 +149,14 @@ const cityLabelStyle = {
 };
 
 const rightContent = {
-	width: "640px",
+	width: "840px",
+	
+	height: "auto",
 	float: "right",
 };
 
 const title = {
-	width: "630px",
+	width: "830px",
 	fontSize: "18px",
 	color: "#00a7e1",
 	linehight: "18px",

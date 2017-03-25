@@ -8,7 +8,7 @@ export class CreateOrderHotel extends Component {
         let checkOut = dateFormat(this.props.content.checkOut, 'yyyy-mm-dd HH:MM:ss');
         return (
             <Step>
-                <Icon name='hotel' />
+                <Icon color='pink' name='hotel' />
                 <Step.Content>
                     <Step.Title>酒店：{this.props.content.hotel}</Step.Title>
                     <Step.Description>入住时间 {checkIn} <br /> 离店时间{checkOut}</Step.Description>
