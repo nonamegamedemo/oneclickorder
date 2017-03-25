@@ -28,7 +28,7 @@ export class CreateOrderOverview extends Component {
                         switch(content.type){
                             case 'flight': 
                                 return (
-                                    <CreateOrderFlight content={content} key={idx} />
+                                    <CreateOrderFlight content={content} key={idx} onClickFlight={this.props.onClickFlight} />
                                 );
                             case 'hotel':
                                 return (
@@ -47,5 +47,6 @@ export class CreateOrderOverview extends Component {
 }
 
 CreateOrderOverview.propTypes = {
+    onClickFlight: React.PropTypes.func.isRequired,
     route: React.PropTypes.array.isRequired
 }
