@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import orderListData from '../mocha-data/order-list.js';
 import {HeaderPart} from '../components/header';
-import {Container, Segment}  from 'semantic-ui-react';
+import {connect} from 'react-redux';
 
-export class OrdersContainer extends Component {
-    render() {
-    	const listData = orderListData.orderList;
-        return (
-            <OrderList listData={listData}/>
-        );
-    }
+// export class OrdersContainer extends Component {
+//     render() {
+//     	const listData = orderListData.orderList;
+//         return (
+//             <OrderList listData={listData}/>
+//         );
+//     }
+// }
+
+const mapStateToProps = (state)=>
+{
+	console.log(state.orders);
+    return{ orders:state.orders};
 }
+
+const mapDispatchToProps = (dispatch)=>{
+    return {
+        onSaveClick: ()=>{
+            dispatch(saveOrder(firstOrder));
+            browserHistory.push('/orders');
+        },
+        onClickFlight: (flight)=>{
+            browserHistory.push('/flightList/上海/香港/2017-03-12');
+        }
+    };
+}
+
 
 class OrderList extends Component{
 	_handleClick() {
@@ -19,90 +38,58 @@ class OrderList extends Component{
 
 	render(){
 		const orders = (
-			<Container className='createOrderContainer'>
-				<Segment color="blue">
-					<div style ={commonStyle} >	
-					 <HeaderPart></HeaderPart>
-					 
-					 <div style={ordersStyle}>			     
-						 <tabel>
-				 			<thead>
-				                <tr>
-				                    <th width="270px;" >
-				                        <label>订单名称</label>
-				                     </th>
-				                    <th width="180px;">
-				                        <div>
-				                            <span >类型<i></i></span>	                     
-				                        </div>
-				                    </th>
-				                    <th width="180px;">旅客</th>
-				                    <th width="200px;">行程开始日期</th>
-				                    <th width="180px;">行程结束日期</th>
-				                    <th width="180px;">总金额</th>
-				                    <th width="60px;"></th>
-				                    <th width="180px;">订单状态</th>
-				                    <th width="180px;">操作</th>
-				                </tr>
-				            </thead>
-						 </tabel>
-					  </div>
+			<div style ={commonStyle} >	
+			 <HeaderPart></HeaderPart>						 	
+			 <h1>订单列表</h1>			
+			 <div style={ordersStyle}>			     
+				 <tabel>
+		 			<thead>
+		                <tr>
+		                 	<th width="160px;" >
+		                        <label>订单号</label>
+		                     </th>
+		                    <th width="280px;" >
+		                        <label>订单名称</label>
+		                     </th>
+		                    <th width="160px;">
+		                    	<label>类型</label>		                        
+		                    </th>
+		                    <th width="160px0px;">旅客</th>
+		                    <th width="180px;">行程开始日期</th>
+		                    <th width="180px;">行程结束日期</th>
+		                    <th width="160px;">总金额</th>		
+		                    <th width="160px;">订单状态</th>		                   
+		                </tr>
+		            </thead>
+				 </tabel>
+			  </div>
+				{this.props.orders.map((data) => 
+					<div  style={ordersStyle}>
+					     <tabel>
+		 			<thead>
+		                <tr>		              
+		                 	<th width="160px;" >
+		                        <label><a href="" target="_blank">{data.id}</a></label>
+		                     </th>
+		                    <th width="280px;" >
+		                        <label>{data.flight[0].from} travel to {data.flight[0].to}</label>
+		                     </th>
+		                    <th width="160px;">
+		                    	<label>旅游度假</label>		                        
+		                    </th>
+		                    <th width="160px;"><div>{data.passengers[0]}</div></th>
+		                    <th width="160px;">{data.travelBeginTime}</th>
+		                    <th width="180px;">{data.travelEndTime} </th>
+		                    <th width="160px;">{data.totalPrice}</th>		  
+		                    <th width="160px;"><p><a href="/createOrder"  target="_blank">订单详情</a></p></th>		                   
+		                </tr>
+		            </thead>
+				 </tabel>
 
-						{this.props.listData.map((data) => 
-							<div  style={ordersStyle}>
-								<ul>
-									<li>
-										<h3>
-											<label></label>
-											<span width="300px;">订单号：
-				   								<a href={data.orderDetailsUrl}  target="_blank">{data.orderId}</a>
-				       						 </span>		       					
-										</h3>
-										<table>
-											<tbody>
-												<tr>
-													<td width="300px;">
-														<a href={data.orderTitleUrl}  target="_blank">{data.from} travel to {data.to}   </a>
-													</td>
-
-													<td width="180px;">  {data.orderBizType}  </td>
-
-													<td width="180px;">
-														<div>
-															<div>{data.passengerNames}</div>
-														</div>
-													</td>
-
-													<td width="180px;">  {data.travelBeginTime}  </td>
-
-													<td width="220px;">  {data.travelEndTime}  </td>		
-
-													<td width="180px;">
-														<span >
-															<dfn>{data.currency}</dfn>
-															{data.orderPrice}
-														</span>												
-													</td>	
-
-													<td width="60px;"></td>			
-
-													<td width="200px;">		
-													    <p><a href={data.orderDetailsUrl}  target="_blank">订单详情</a></p>
-													</td>
-													<td width="180px;">
-													    <p onClick={this._handleClick}><a href={data.orderOptionUrl}>{data.orderOption}</a></p>
-													</td>
-
-												</tr>
-											</tbody>
-										</table>
-									</li>
-								</ul>
-							</div>
-							)}
+						
 					</div>
-				</Segment>
-			</Container>
+					)}
+			</div>
 		);
 
 		return (
@@ -114,6 +101,13 @@ class OrderList extends Component{
 	}
 
 }
+
+export const OrdersContainer = connect(
+        mapStateToProps, null
+        // mapDispatchToProps,
+    )(OrderList);
+
+
 
 const commonStyle ={
 	color:" #000",	
