@@ -8,7 +8,7 @@ import {ToursRecommendContainer}                                 from './pages/t
 import {OrdersContainer}                                         from './pages/orders-container';
 import CreateOrderContainer                                      from './pages/create-order-container';
 import FlightListContainer                                       from './pages/flight-list-container';
-import {HotelListContainer}                                      from './pages/hotel-list-container';
+import HotelListContainer                                        from './pages/hotel-list-container';
 import mainSass                                                  from './sass/main.sass';
 import {Router, Route, IndexRoute, browserHistory, RouterContext}from 'react-router';
 import {Provider}                                                from 'react-redux';

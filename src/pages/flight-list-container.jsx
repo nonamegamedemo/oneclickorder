@@ -8,9 +8,7 @@ import { browserHistory } from 'react-router';
 import { FlightList } from './flight-list';
 
 const mapStateToProps = (state) => {
-  return {
-    value: "test"
-  };
+  return state;
 }
 
 const mapDispatchToProps = (dispatch) => {

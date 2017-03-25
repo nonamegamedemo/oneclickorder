@@ -30,7 +30,7 @@ class CardList extends Component {
 			<div >
 				<h1>{fromTime} 至 {toCity} 的机票</h1>
 				{this.props.listData[fromCity][toCity].map((data)=>
-					<div style={cardStyle} width="1000">
+					<div style={cardStyle} width="1000" key={data.flightNo}>
 						<table>
 							<tr>
 								<th width="150"><h1>{data.company}</h1></th>
