@@ -1,5 +1,12 @@
 import format from 'dateformat';
 
+/**
+ * 获取行程内容
+ * 将机票火车票以及酒店合并
+ *
+ * @param  {[type]} order [description]
+ * @return {[type]}       [description]
+ */
 export function getRoute(order) {
     let items = getAllTransportItems(order).concat(order.hotel);
 
@@ -14,6 +21,12 @@ export function getRoute(order) {
     return items;
 }
 
+/**
+ * 以Date进行分组并归类信息
+ *
+ * @param  {[type]} order [description]
+ * @return {[type]}       [description]
+ */
 export function getDetailGroupOfDate(order) {
     let items = getAllTransportItems(order);
     let ret = {};
@@ -25,10 +38,24 @@ export function getDetailGroupOfDate(order) {
     return ret;
 }
 
+/**
+ * 将酒店加入至分组信息中
+ *
+ * @param  {[type]} items [description]
+ * @param  {[type]} ret   [description]
+ * @return {[type]}       [description]
+ */
 function appendHotelsToGroup(items, ret) {
     items.map(item => appendHotelToGroup(item, ret));
 }
 
+/**
+ * 将单个酒店数据加入到分组信息中
+ *
+ * @param  {[type]} item [description]
+ * @param  {[type]} ret  [description]
+ * @return {[type]}      [description]
+ */
 function appendHotelToGroup(item, ret) {
     let startDate = new Date(item.checkIn);
     let endDate = new Date(item.checkOut);
@@ -39,6 +66,13 @@ function appendHotelToGroup(item, ret) {
     
 }
 
+/**
+ * 将交通部分（机票火车）等内容加入到组信息中
+ *
+ * @param  {[type]} items [description]
+ * @param  {[type]} ret   [description]
+ * @return {[type]}       [description]
+ */
 function appendTransportsToGroup(items, ret) {
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
@@ -73,6 +107,16 @@ function appendTransportToGroup(item, ret) {
     pushItemToAllDays(clonedData, startDate, endDate, ret, cityGetter);
 }
 
+/**
+ * 将Item信息推送到全
+ *
+ * @param  {[type]} item       [description]
+ * @param  {[type]} startDate  [description]
+ * @param  {[type]} endDate    [description]
+ * @param  {[type]} ret        [description]
+ * @param  {[type]} cityGetter [description]
+ * @return {[type]}            [description]
+ */
 function pushItemToAllDays(item, startDate, endDate, ret, cityGetter) {
     let diff = getDurationDays(startDate, endDate);
 
@@ -89,6 +133,13 @@ function pushItemToAllDays(item, startDate, endDate, ret, cityGetter) {
     }
 }
 
+/**
+ * 计算出间隔的天数
+ *
+ * @param  {[type]} startDate [description]
+ * @param  {[type]} endDate   [description]
+ * @return {[type]}           [description]
+ */
 function getDurationDays(startDate, endDate) {
     let startDateClone = new Date(startDate.getTime());
     let endDateClone = new Date(endDate.getTime());
@@ -109,6 +160,12 @@ function getDurationDays(startDate, endDate) {
     return durDay;
 }
 
+/**
+ * 将date信息中的时间内容都设为0
+ *
+ * @param  {[type]} date [description]
+ * @return {[type]}      [description]
+ */
 function clearTimeToZero(date) {
     date.setHours(0);
     date.setMinutes(0);
@@ -116,6 +173,11 @@ function clearTimeToZero(date) {
     date.setMilliseconds(0);
 }
 
+/**
+ * 将date信息中的时间内容都设值为23:59:59:999
+ *
+ * @param {[type]} date [description]
+ */
 function setTimeToEnd(date) {
     date.setHours(23);
     date.setMinutes(59);
@@ -123,6 +185,13 @@ function setTimeToEnd(date) {
     date.setMilliseconds(59);
 }
 
+/**
+ * 将目的地内容加入至分组信息中
+ *
+ * @param  {[type]} dests [description]
+ * @param  {[type]} ret   [description]
+ * @return {[type]}       [description]
+ */
 function appendDestsToGroup(dests, ret) {
     for (let i = 0; i < dests.length; i++) {
         let dest = dests[i];
@@ -131,6 +200,13 @@ function appendDestsToGroup(dests, ret) {
     }
 }
 
+/**
+ * 将单个目的地内容加入分组信息中
+ *
+ * @param  {[type]} dest [description]
+ * @param  {[type]} ret  [description]
+ * @return {[type]}      [description]
+ */
 function appendDestToGroup(dest, ret) {
     let date = new Date(dest.date);
     let dateStr = format(date, 'yyyy-mm-dd');
@@ -141,6 +217,16 @@ function appendDestToGroup(dest, ret) {
     pushDetailToCityGroup(record, dest.city, dest, date, date, dateStr);
 }
 
+/**
+ * 将城市信息进行归类，并进行分组
+ *
+ * @param  {[type]} record    [description]
+ * @param  {[type]} city      [description]
+ * @param  {[type]} startDate [description]
+ * @param  {[type]} endDate   [description]
+ * @param  {[type]} item      [description]
+ * @return {[type]}           [description]
+ */
 function pushCityInfos(record, city, startDate, endDate, item) {
     if (!record.cities[city]) {
         return record.cities[city] = {start: startDate, end: endDate, city: city, item: item};
@@ -156,6 +242,17 @@ function pushCityInfos(record, city, startDate, endDate, item) {
     }
 }
 
+/**
+ * 将item内容加入到对应的城市分组信息中
+ *
+ * @param  {[type]} record     [description]
+ * @param  {[type]} city       [description]
+ * @param  {[type]} item       [description]
+ * @param  {[type]} startDate  [description]
+ * @param  {[type]} endDate    [description]
+ * @param  {[type]} curDateStr [description]
+ * @return {[type]}            [description]
+ */
 function pushDetailToCityGroup(record, city, item, startDate, endDate, curDateStr) {
     let cityGroup = getOrCreateCityGroup(record, city);
     let data = {item: item, start: startDate, end: endDate};
@@ -177,10 +274,24 @@ function pushDetailToCityGroup(record, city, item, startDate, endDate, curDateSt
     }
 }
 
+/**
+ * 将item加入到列表中
+ *
+ * @param  {[type]} record [description]
+ * @param  {[type]} item   [description]
+ * @return {[type]}        [description]
+ */
 function pushDetailToList(record, item) {
     record.details.push(item);
 }
 
+/**
+ * 获取城市分组，如果没有就建立一个新的
+ *
+ * @param  {[type]} record [description]
+ * @param  {[type]} city   [description]
+ * @return {[type]}        [description]
+ */
 function getOrCreateCityGroup(record, city) {
     if (!record.cityGroup[city]) {
         record.cityGroup[city] = [];
@@ -189,6 +300,13 @@ function getOrCreateCityGroup(record, city) {
     return record.cityGroup[city];
 }
 
+/**
+ * 根据格式化后的时间建立字符串
+ *
+ * @param  {[type]} dateStr [description]
+ * @param  {[type]} ret     [description]
+ * @return {[type]}         [description]
+ */
 function getOrCreateRecord(dateStr, ret) {
     if (!ret[dateStr]) {
         genRetDateRecord(dateStr, ret);
@@ -197,10 +315,23 @@ function getOrCreateRecord(dateStr, ret) {
     return ret[dateStr];
 }
 
+/**
+ * 创建日期记录
+ *
+ * @param  {[type]} dateStr [description]
+ * @param  {[type]} ret     [description]
+ * @return {[type]}         [description]
+ */
 function genRetDateRecord(dateStr, ret) {
     ret[dateStr] = {details: [], cityGroup: {}, cities: {}};
 }
 
+/**
+ * 根据不同的key设定，将字符串内容转换为时间
+ *
+ * @param  {[type]} items [description]
+ * @return {[type]}       [description]
+ */
 function parseItemTimes(items) {
     let timePropKeys = ['departure', 'arrive', 'checkIn', 'checkOut'];
     items.map(item=>{
@@ -212,12 +343,24 @@ function parseItemTimes(items) {
     });
 }
 
+/**
+ * 获取订单里所有关于交通的信息内容
+ *
+ * @param  {[type]} order [description]
+ * @return {[type]}       [description]
+ */
 function getAllTransportItems(order) {
     var items = [].concat(order.flight, order.train);
 
     return items;
 }
 
+/**
+ * 排序城市信息
+ *
+ * @param  {[type]} record [description]
+ * @return {[type]}        [description]
+ */
 function sortDetailsCityInfos(record) {
     for (let dateStr in record) {
         let todayStart = getZeroClockDate(dateStr);
@@ -226,10 +369,22 @@ function sortDetailsCityInfos(record) {
     }
 }
 
+/**
+ * 创建时间为00:00：00:000的日期
+ *
+ * @param  {[type]} dateStr [description]
+ * @return {[type]}         [description]
+ */
 function getZeroClockDate(dateStr) {
     return new Date(dateStr + " 00:00:00:000");
 }
 
+/**
+ * 创建时间为23:59:59:999的日期
+ *
+ * @param  {[type]} dateStr [description]
+ * @return {[type]}         [description]
+ */
 function getEndClockDate(dateStr) {
     let date = new Date(dateStr + " 23:59:59:999");
     return date;
@@ -246,6 +401,8 @@ function sortDetailsCityInfo(record, todayStart, todayEnd) {
 
 /**
  * 进行比较
+ * 如果开始日期早于今日，则排序在前
+ * 如果结束日期晚于今日，则排序在后
  *
  * @param  {[type]} e1         [description]
  * @param  {[type]} e2         [description]
