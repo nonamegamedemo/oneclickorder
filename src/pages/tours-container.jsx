@@ -6,6 +6,7 @@ import {ToursRecommendContainer} from './tours-recommend-container';
 import {OrdersContainer} from './orders-container';
 import {HeaderPart} from '../components/header';
 
+import { Icon } from 'semantic-ui-react'
 
 export class ToursContainer extends Component {
     render() {
@@ -16,12 +17,57 @@ export class ToursContainer extends Component {
     }
 }
 
-class CardList extends Component {
-/*	<h1 onClick={this._handleClick}><a href={data.detailURL}>{data.title}</a></h1>
-	_handleClick() {
-		alert('go to detail page');
-	}*/
+class UserIcon extends Component {
+	render() {
+		return(
+			<Icon.Group>
+				<Icon name='user outline' />
+			</Icon.Group>
+		);
+	}
+}
 
+class CalenderIcon extends Component {
+	render() {
+		return(
+			<Icon.Group>
+				<Icon name='calendar outline' />
+			</Icon.Group>
+		);
+	}
+}
+
+class EyeIcon extends Component {
+	render() {
+		return(
+			<Icon.Group>
+				<Icon name='eye' />
+			</Icon.Group>
+		);
+	}
+}
+
+class HeartIcon extends Component {
+	render() {
+		return(
+			<Icon.Group>
+				<Icon color='orange' name='star' />
+			</Icon.Group>
+		);
+	}
+}
+
+class CommentIcon extends Component {
+	render() {
+		return(
+			<Icon.Group>
+				<Icon name='commenting outline' />
+			</Icon.Group>
+		);
+	}
+}
+
+class CardList extends Component {
 	render() {
 
 		const card = (
@@ -56,10 +102,17 @@ class CardList extends Component {
 										</h1>
 									</div>
 									<div>
-										<span style={author}>{data.author}&nbsp;发布于&nbsp;{data.publicTime}</span>
+										<span style={author}>
+											<UserIcon/>{data.author}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<CalenderIcon/>发布于&nbsp;{data.publicTime}</span>
 									</div>
 									<div style={content}>
 										<p onClick={this._handleClick}>{data.content}</p>
+									</div>
+									<div style={{color: "#999999"}}>
+										<EyeIcon/>{data.read}&nbsp;&nbsp;&nbsp;
+										<CommentIcon/>{data.comments}&nbsp;&nbsp;&nbsp;
+										<HeartIcon/>{data.favorite}&nbsp;&nbsp;&nbsp;
 									</div>
 								</div>
 							</div>
