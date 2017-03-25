@@ -25,6 +25,12 @@ export function createOrderReducer(state = null, action) {
         case 'switchOrderRelaxState':
             state = switchOrderRelaxState(state, action);
             break;
+        case 'changeFlight':
+            state = changeFlight(state, action);
+            break;
+        case 'selectFlight':
+            state = selectFlight(state, action);
+            break;
     }
     return state;
 }
@@ -36,14 +42,31 @@ function switchOrderRelaxState(state, action) {
     return newState;
 }
 
-function saveOrder(state, action) {
-    let newState = state.slice();
-    newState.push(action.order);
+function selectFlight(state, action) {
+    let order = Object.assign({}, state);
+    let newFlight = Object.assign({}, action.flight);
+    let flights = order.flight;
+
+    let sourceIdx = flights.indexOf(order.changeSource);
+
+    newFlight.type = 'flight';
+    if (sourceIdx >= 0) {
+        flights.splice(sourceIdx, 1, newFlight);
+    }
+
+    order.flight = flights;
+    order.changeSource = null;
+    return order;
+}
+
+function changeFlight(state, action) {
+    let newState = Object.assign({}, state, {changeSource: action.flightInfo});
     return newState;
 }
 
-// function getFlight(state, action) {
-//     let newState = Object.assign({}, state, action.flight);
-//     console.log(newState);
-//     return newState;
-// }
+function saveOrder(state, action) {
+    let newState = state.slice();
+    delete action.order['changeSource'];
+    newState.push(action.order);
+    return newState;
+}

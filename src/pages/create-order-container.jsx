@@ -3,11 +3,12 @@ import {connect} from 'react-redux';
 import {CreateOrder} from './create-order';
 import orderData from '../mocha-data/order.js';
 import * as _ from 'lodash';
-import {saveOrder, createOrder, switchToRelaxOrder} from '../actions/order-actions.js';
+import {saveOrder, createOrder, switchToRelaxOrder, changeFlight} from '../actions/order-actions.js';
 // format data's time to Date type
 import {getRoute, getDetailGroupOfDate} from '../helpers/order-helpers.js';
 import { browserHistory } from 'react-router';
 import {tourScheduleList} from '../mocha-data/tour-schedule.js';
+import dateformat from 'dateformat';
 
 let firstOrder;
 const mapStateToProps = (state)=>{
@@ -36,7 +37,8 @@ const mapDispatchToProps = (dispatch, props)=>{
             browserHistory.push('/orders');
         },
         onClickFlight: (flight)=>{
-            browserHistory.push('/flightList/上海/香港/2017-03-12');
+            dispatch(changeFlight(flight));
+            browserHistory.push(`/flightList/${flight.from}/${flight.to}/${dateformat(flight.departure, 'yyyy-mm-dd')}`);
         }
     };
 }

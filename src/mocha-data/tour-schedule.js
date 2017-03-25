@@ -4,6 +4,7 @@ module.exports = {
             "totalDayCount":12,
             "budget":12000,
             "with":"夫妻",
+            "title": "邂逅格拉纳达",
             "scheduleList":[
                 [
                     {
@@ -244,6 +245,7 @@ module.exports = {
             "totalDayCount":9,
             "budget":7000,
             "with":"朋友",
+            "title": "贝加尔湖完美攻略",
             "scheduleList":[
                 [
                     {
@@ -403,6 +405,7 @@ module.exports = {
             "totalDayCount":8,
             "budget":7000,
             "with":"朋友",
+            "title": "西藏，一个离天堂很近的地方",
             "scheduleList":[
                 [
                     {

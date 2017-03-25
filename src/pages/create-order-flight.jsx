@@ -10,7 +10,7 @@ export class CreateOrderFlight extends Component {
         this.handleClick = this._handleClick.bind(this);
     }
     _handleClick() {
-        this.props.onClickFlight();
+        this.props.onClickFlight(this.props.content);
     }
     render() {
         let departureDate = dateFormat(this.props.content.departure, 'yyyy-mm-dd HH:MM:ss');
@@ -31,5 +31,6 @@ export class CreateOrderFlight extends Component {
 }
 
 CreateOrderFlight.PropTypes = {
+    content: React.PropTypes.object.isRequired,
     onClickFlight: React.PropTypes.func.isRequired
 };

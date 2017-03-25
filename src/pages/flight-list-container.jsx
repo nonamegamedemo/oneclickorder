@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onFlightClick: (flight) => {
       console.log(flight);
-    	dispatch(selectFlight(flight));
+      dispatch(selectFlight(flight));
       browserHistory.push('/createOrder');
     }
   };

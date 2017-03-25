@@ -41,6 +41,9 @@ export function createOrder(state, action) {
     order.destinations = dests;
     order.totalPrice = "10000";
     order.passengers = ['test'];
+    order.orderTitle = tour.title;
+    order.travelBeginTime = dateformat(startDate, 'yyyy-mm-dd HH:MM:ss');
+    order.travelEndTime = dateformat(endDate, 'yyyy-mm-dd HH:MM:ss');
 
     console.log(order);
     return order;

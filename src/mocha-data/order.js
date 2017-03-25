@@ -5,8 +5,11 @@ module.exports = {
             "from": "Shanghai",
             "to": "Australia",
             "tour": "1",
+            "orderTitle": "自定义数据",
             "totalPrice": "10000",
             "passengers": ['tester'],
+            "travelBeginTime": "2017-08-16 21:12:00",
+            "travelEndTime": "2017-08-25 08:30:00",
             "destinations": [
                 {
                     "id": "1",
