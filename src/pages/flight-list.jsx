@@ -41,7 +41,7 @@ class CardList extends Component {
 			<div style={tourWrap} >
 				<HeaderPart></HeaderPart>
 				<Header as='h2' icon textAlign='center'>
-                    <Icon name='plane' circular></Icon>
+                    <Icon name='plane' color='blue' circular></Icon>
                     <Header.Content>
                         至 {toCity} 的机票
                     </Header.Content>

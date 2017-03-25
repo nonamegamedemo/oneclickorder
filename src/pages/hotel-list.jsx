@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import hotelListData from '../mocha-data/hotel.js';
-import { Button} from 'semantic-ui-react';
+import { Button,Card, Icon, Header} from 'semantic-ui-react';
 
 import {HeaderPart} from '../components/header';
 
@@ -30,33 +30,42 @@ class CardList extends Component {
 		var fromCity = this.props.fromCity;
 		var fromTime = this.props.fromTime;
 		const card = (
-			<div >
+			<div style={tourWrap}>
 				<HeaderPart></HeaderPart>
-				
-				<h1>{fromCity} 在 {fromTime} 的酒店</h1>
+				<Header as='h2' icon textAlign='center'>
+                    <Icon name='hotel' color='pink' circular></Icon>
+                    <Header.Content>
+                        {fromCity} 的酒店
+                    </Header.Content>
+                    <Header.Subheader>
+						{fromTime}
+    				</Header.Subheader>
+                </Header>
+                <Card.Group>
 				{this.props.listData[fromCity].map((data)=>
-					<div style={cardStyle} width="1000" key={data.hotel}>
-						<table>
+					<Card fluid color='blue' header='Option 1' key={data.hotel}>
+						<table width="100%">
 							<tr>
-								<th><img src={data.pic}/></th>
-								<th width="300">
-								<table>
-									<tr>
-										<td><h2>{data.hotel}</h2></td>
-									</tr>
-									<tr>
-										<td><p>{data.address}</p></td>
-									</tr>
-								</table>
-								</th>
-								<th width="100">星级：{data.level}</th>
-								<th width="100">评价：{data.score}</th>
-								<th width="100"><h2>{data.price}</h2></th>
-								<th><Button onClick={()=>{this.onHotelClick(data)}}>选择</Button></th>
+									<td width="50%">
+					                  <Header as='h2'>
+									    <Icon name='hotel' color='pink' />
+									    <Header.Content>
+									      {data.hotel}
+										<Header.Subheader>
+										{data.address}
+										</Header.Subheader>
+									    </Header.Content>
+									  </Header>
+									</td>
+								<td width="10%">星级：{data.level}</td>
+								<td width="10%">评价：{data.score}</td>
+								<td width="100"><Header color="orange" icon="yen" content={data.price}/></td>
+								<td width="10%"><Button color='red' onClick={()=>{this.onHotelClick(data)}}>选择</Button></td>
 							</tr>
 						</table>					
-					</div>
+					</Card>
 				)}
+				</Card.Group>
 			</div>
 		);
 
@@ -68,9 +77,6 @@ class CardList extends Component {
 	}
 }
 
-
-const cardStyle = {
-	width: "100%",
-	border: "1px solid black",
-	margin: "10px",
+const tourWrap = {
+	padding: "20px 100px 20px 100px",
 };
