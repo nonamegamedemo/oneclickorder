@@ -29,6 +29,17 @@ class CardList extends Component {
 	render() {
 		var fromCity = this.props.fromCity;
 		var fromTime = this.props.fromTime;
+
+		var copiedData = _.cloneDeep(this.props.listData);
+
+		copiedData.map((data) => {
+			if (data.city != fromCity) {
+				data.city = fromCity;
+				data.hotel = fromCity + data.hotel;
+				data.address = fromCity + data.address;
+			}
+		});
+
 		const card = (
 			<div style={tourWrap}>
 				<HeaderPart></HeaderPart>
@@ -42,7 +53,7 @@ class CardList extends Component {
     				</Header.Subheader>
                 </Header>
                 <Card.Group>
-				{this.props.listData[fromCity].map((data)=>
+				{copiedData.map((data)=>
 					<Card fluid color='blue' header='Option 1' key={data.hotel}>
 						<table width="100%">
 							<tr>
