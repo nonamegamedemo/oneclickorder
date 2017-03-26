@@ -1,5 +1,12 @@
 import {createOrder} from './order-reducer-create';
 
+/**
+ * 订单列表reducer
+ *
+ * @param  {Array}  state  [description]
+ * @param  {[type]} action [description]
+ * @return {[type]}        [description]
+ */
 export function ordersReducer(state = [], action) {
     switch(action.type){
         case 'saveOrder':
@@ -14,6 +21,13 @@ export function orderMapReducer(state = {}, action) {
     return state;
 }
 
+/**
+ * 新订单的reducer
+ *
+ * @param  {[type]} state  [description]
+ * @param  {[type]} action [description]
+ * @return {[type]}        [description]
+ */
 export function createOrderReducer(state = null, action) {
     switch(action.type) {
         case 'createOrder':
@@ -28,11 +42,41 @@ export function createOrderReducer(state = null, action) {
         case 'changeFlight':
             state = changeFlight(state, action);
             break;
+        case 'changeHotel':
+            state = changeHotel(state, action);
+            break;
         case 'selectFlight':
             state = selectFlight(state, action);
             break;
+        case 'addPassenger':
+            state = addPassenger(state, action);
+            break;
+        case 'removePassenger':
+            state = removePassenger(state, action);
+            break;
     }
     return state;
+}
+
+function removePassenger(state, action) {
+    let idx = state.passengers.indexOf(action.passengerName);
+    if (idx < 0) return state;
+
+    let newState = Object.assign({}, state);
+    let passengers = newState.passengers.slice();
+    passengers.splice(idx, 1);
+    newState.passengers = passengers;
+
+    return newState;
+}
+
+function addPassenger(state, action) {
+    let newState = Object.assign({}, state);
+    let passengers = newState.passengers.slice();
+    passengers.push(action.passengerName);
+    newState.passengers = passengers;
+
+    return newState;
 }
 
 function switchOrderRelaxState(state, action) {
@@ -61,6 +105,11 @@ function selectFlight(state, action) {
 
 function changeFlight(state, action) {
     let newState = Object.assign({}, state, {changeSource: action.flightInfo});
+    return newState;
+}
+
+function changeHotel(state, action) {
+    let newState = Object.assign({}, state, {changeSource: action.hotelInfo});
     return newState;
 }
 

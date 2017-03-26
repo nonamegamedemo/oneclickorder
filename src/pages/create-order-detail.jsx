@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Table, Menu, Icon, Popup, Button}   from 'semantic-ui-react';
+import {Container, Table, Menu, Icon, Popup, Button, Grid}   from 'semantic-ui-react';
 import _ from 'lodash';
 
 export class CreateOrderDetail extends Component {
@@ -17,24 +17,40 @@ export class CreateOrderDetail extends Component {
         const maxRows = (_.maxBy(columns, column => column.length)).length;
         let rows = [];
 
-        console.log(maxRows);
         for (let i = 0; i < maxRows; i++) {
             rows.push(<Table.Row key={`row${i}`}>{columns.map((column, idx)=>this._renderCell(i, column, idx + columns.length * i))}</Table.Row>);
         }
         
         return rows;
     }
+    _renderChangeBtn(icon) {
+        if (icon) {
+            return (
+                <Grid.Column>
+                    <Button color='red' content='更换' fluid />
+                </Grid.Column>
+            );
+        }
+                      
+    }
     _renderCell(rowNum, column, columnAmount) {
         if (column[rowNum]) {
             let data = column[rowNum];
             let content = data.content;
             let icon = data.icon;
-            return <Popup
-                trigger={<Table.Cell key={`col${columnAmount}`}>{this._renderIcon(icon)}{content}</Table.Cell>}
-                content={'详情内容'}
-                on='click'
-                position='top right'
-              />
+            return (
+                <Popup
+                    trigger={<Table.Cell key={`col${columnAmount}`}>{this._renderIcon(icon)}{content}</Table.Cell>}
+                    on='click'
+                >
+                    <Grid divided columns='equal'>
+                      <Grid.Column>
+                        <Button color='blue' content='详情' fluid />
+                      </Grid.Column>
+                      {this._renderChangeBtn(icon)}
+                    </Grid>
+                </Popup>
+            )
         } else {
             return <Table.Cell key={`col${columnAmount}`}>&nbsp;</Table.Cell>
         }

@@ -32,7 +32,7 @@ export class CreateOrderOverview extends Component {
                                 );
                             case 'hotel':
                                 return (
-                                    <CreateOrderHotel content={content} key={idx} />
+                                    <CreateOrderHotel content={content} key={idx} onClickHotel={this.props.onClickHotel} />
                                 );
                             case 'train':
                                 return (
@@ -47,6 +47,7 @@ export class CreateOrderOverview extends Component {
 }
 
 CreateOrderOverview.propTypes = {
+    onClickHotel: React.PropTypes.func.isRequired,
     onClickFlight: React.PropTypes.func.isRequired,
     route: React.PropTypes.array.isRequired
 }

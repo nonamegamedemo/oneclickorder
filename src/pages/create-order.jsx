@@ -27,7 +27,7 @@ export class CreateOrder extends Component {
                         <Label as="teal" color="teal" tag>交通、住宿快速浏览</Label>
                     </div>
 
-                    <CreateOrderOverview route={this.props.route} onClickFlight={this.props.onClickFlight} />
+                    <CreateOrderOverview route={this.props.route} onClickFlight={this.props.onClickFlight} onClickHotel={this.props.onClickHotel} />
                     
                     <div style={{marginBottom: "10px"}}>
                         <Label as="teal" color="teal" tag>出行明细表</Label>
@@ -35,7 +35,7 @@ export class CreateOrder extends Component {
 
                     <CreateOrderDetail route={this.props.route} detail={this.props.detail} />
                     
-                    <CreateOrderPassenger passengers={this.props.orderData.passengers} />
+                    <CreateOrderPassenger passengers={this.props.orderData.passengers} addPassenger={this.props.addPassenger} removePassenger={this.props.removePassenger} />
                     
                     <CreateOrderController duration={this.props.orderData.duration} isRelax={!!this.props.orderData.isRelax} totalPrice={this.props.orderData.totalPrice} onSaveClick={this.props.onSaveClick} onRelaxChanged={this.props.onRelaxChanged}/>
                 </Segment>
@@ -48,7 +48,10 @@ CreateOrder.propTypes = {
     route: React.PropTypes.array,
     detail: React.PropTypes.object,
     orderData: React.PropTypes.object,
+    removePassenger: React.PropTypes.func.isRequired,
+    addPassenger: React.PropTypes.func.isRequired,
     onRelaxChanged: React.PropTypes.func.isRequired,
+    onClickHotel: React.PropTypes.func.isRequired,
     onClickFlight: React.PropTypes.func.isRequired,
     onSaveClick: React.PropTypes.func.isRequired
 }

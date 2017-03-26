@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {CreateOrder} from './create-order';
 import orderData from '../mocha-data/order.js';
 import * as _ from 'lodash';
-import {saveOrder, createOrder, switchToRelaxOrder, changeFlight} from '../actions/order-actions.js';
+import {saveOrder, createOrder, switchToRelaxOrder, changeFlight, changeHotel, addNewPassenger, removePassenger} from '../actions/order-actions.js';
 // format data's time to Date type
 import {getRoute, getDetailGroupOfDate} from '../helpers/order-helpers.js';
 import { browserHistory } from 'react-router';
@@ -29,12 +29,22 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch, props)=>{
     return {
+        removePassenger: (passengerName) => {
+            dispatch(removePassenger(passengerName));
+        },
+        addPassenger: (newPassengerName) => {
+            dispatch(addNewPassenger(newPassengerName));
+        },
         onRelaxChanged: (isRelax) => {
             dispatch(switchToRelaxOrder(isRelax));
         },
         onSaveClick: ()=>{
             dispatch(saveOrder(firstOrder));
             browserHistory.push('/orders');
+        },
+        onClickHotel: (hotel)=>{
+            dispatch(changeHotel(hotel));
+            browserHistory.push(`/hotelList/${hotel.city}/${dateformat(hotel.checkIn, 'yyyy-mm-dd')}`);
         },
         onClickFlight: (flight)=>{
             dispatch(changeFlight(flight));
