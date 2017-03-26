@@ -48,6 +48,9 @@ export function createOrderReducer(state = null, action) {
         case 'selectFlight':
             state = selectFlight(state, action);
             break;
+        case 'selectHotel':
+            state = selectHotel(state, action);
+            break;
         case 'addPassenger':
             state = addPassenger(state, action);
             break;
@@ -99,6 +102,25 @@ function selectFlight(state, action) {
     }
 
     order.flight = flights;
+    order.changeSource = null;
+    return order;
+}
+
+function selectHotel(state, action) {
+    let order = Object.assign({}, state);
+    let hotel = action.hotel;
+    let hotels = order.hotel;
+
+    let sourceIdx = hotels.indexOf(order.changeSource);
+    if (sourceIdx < 0) return state;
+
+    let newHotel = Object.assign({}, hotels[sourceIdx]);
+    newHotel.city = hotel.city;
+    newHotel.hotel = hotel.hotel;
+    newHotel.address = hotel.address;
+    hotels.splice(sourceIdx, 1, newHotel);
+
+    order.hotel = hotels;
     order.changeSource = null;
     return order;
 }
