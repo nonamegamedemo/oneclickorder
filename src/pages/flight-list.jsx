@@ -65,16 +65,16 @@ class CardList extends Component {
 									    </Header.Content>
 									  </Header>
 									</td>
-									<td width="25%">
+									<td width="25%" style={padding10}>
 										<Header as='h2' icon="level up" content={data.departureTerminal} subheader={data.departure} />
 									</td>
 									<td width="10%">
 										<td><Icon name='long arrow right' size='huge' color='grey'/></td>
 									</td>
-									<td width="25%">
+									<td width="25%" style={padding10}>
 										<Header as='h2' icon="level down" content={data.arrivalTerminal} subheader={data.arrive} />
 									</td>
-									<td width="100"><Header color="orange" icon="yen" content={data.price}/></td>
+									<th width="100"><h2 style={{color: "#ff7d13"}}><span style={{fontSize: "18px"}}>¥</span>{data.price}</h2></th>
 									<td width="10%"><Button color="red" onClick={()=>{this.onFlightClick(data, this.props.fromCity, this.props.toCity, this.props.fromTime)}}>选择</Button></td>
 								</tr>
 							</table>
@@ -82,6 +82,7 @@ class CardList extends Component {
 					)}
 				</Card.Group>
 			</div>
+
 		);
 
 		return (
@@ -98,7 +99,11 @@ const tourWrap = {
 
 const selectBtn = {
 	float: "right",
-}
+};
+
+const padding10 = {
+	padding: "10px 0px",
+};
 
 export class FlightList extends Component {
 	onClick() {

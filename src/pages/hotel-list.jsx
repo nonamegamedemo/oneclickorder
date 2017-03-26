@@ -48,8 +48,8 @@ class CardList extends Component {
 							<tr>
 									<td width="50%">
 					                  <Header as='h2'>
-									    <Icon name='hotel' color='pink' />
-									    <Header.Content>
+									    <Icon style={padding10} name='hotel' color='pink' />
+									    <Header.Content style={padding10}>
 									      {data.hotel}
 										<Header.Subheader>
 										{data.address}
@@ -59,7 +59,7 @@ class CardList extends Component {
 									</td>
 								<td width="10%">星级：{data.level}</td>
 								<td width="10%">评价：{data.score}</td>
-								<td width="100"><Header color="orange" icon="yen" content={data.price}/></td>
+								<th width="100"><h2 style={{color: "#ff7d13"}}><span style={{fontSize: "18px"}}>¥</span>{data.price}</h2></th>
 								<td width="10%"><Button color='red' onClick={()=>{this.onHotelClick(data)}}>选择</Button></td>
 							</tr>
 						</table>					
@@ -79,4 +79,18 @@ class CardList extends Component {
 
 const tourWrap = {
 	padding: "20px 100px 20px 100px",
+};
+
+const cardStyle = {
+	width: "100%",
+	border: "1px solid black",
+	margin: "10px",
+};
+
+const img = {
+	padding: "10px",
+};
+
+const padding10 = {
+	padding: "10px",
 };
