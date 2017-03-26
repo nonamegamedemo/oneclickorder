@@ -44,13 +44,20 @@ export function createOrder(state, action) {
     order.passengers = ['test'];
     order.orderTitle = tour.title;
     order.duration = dur;
-    order.travelBeginTime = dateformat(startDate, 'yyyy-mm-dd HH:MM:ss');
-    order.travelEndTime = dateformat(endDate, 'yyyy-mm-dd HH:MM:ss');
+    order.travelBeginTime = dateformat(startDate, 'yyyy-mm-dd');
+    order.travelEndTime = dateformat(endDate, 'yyyy-mm-dd');
 
     console.log(order);
     return order;
 }
 
+/**
+ * 获得机票信息
+ *
+ * @param  {[type]} days      [description]
+ * @param  {[type]} startDate [description]
+ * @return {[type]}           [description]
+ */
 function getFlights(days, startDate) {
     let flights = {};
     days.forEach((actions, dayOffset) => {
@@ -96,6 +103,15 @@ function getFlights(days, startDate) {
     return rets;
 }
 
+/**
+ * 获取火车相关信息（火车暂时只能获得当天的内容）
+ *
+ * @param  {[type]} action     [description]
+ * @param  {[type]} startDate  [description]
+ * @param  {[type]} actionDate [description]
+ * @param  {[type]} dayOffset  [description]
+ * @return {[type]}            [description]
+ */
 function getTrain(action, startDate, actionDate, dayOffset) {
     let depTime = new Date(actionDate.getTime());
     depTime.setHours(14);
@@ -118,6 +134,13 @@ function getTrain(action, startDate, actionDate, dayOffset) {
     return ret;
 }
 
+/**
+ * 获取酒店相关信息
+ *
+ * @param  {[type]} days      [description]
+ * @param  {[type]} startDate [description]
+ * @return {[type]}           [description]
+ */
 function getHotels(days, startDate) {
     let hotels = {};
     days.forEach((actions, dayOffset) => {
@@ -163,6 +186,15 @@ function getHotels(days, startDate) {
     return rets;
 }
 
+/**
+ * 构建景点的行程信息
+ *
+ * @param  {[type]} action     [description]
+ * @param  {[type]} startDate  [description]
+ * @param  {[type]} actionDate [description]
+ * @param  {[type]} dayOffset  [description]
+ * @return {[type]}            [description]
+ */
 function getDest(action, startDate, actionDate, dayOffset) {
     let ret = {
             "id": (new Date()).getTime(),

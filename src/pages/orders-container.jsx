@@ -51,8 +51,8 @@ class OrderList extends Component{
                           <Table.HeaderCell>订单号</Table.HeaderCell>
                           <Table.HeaderCell>订单名称</Table.HeaderCell>
                           <Table.HeaderCell>旅客</Table.HeaderCell>
-                          <Table.HeaderCell>行程开始日期</Table.HeaderCell>
-                          <Table.HeaderCell>行程结束日期</Table.HeaderCell>
+                          <Table.HeaderCell>开始日期</Table.HeaderCell>
+                          <Table.HeaderCell>结束日期</Table.HeaderCell>
                           <Table.HeaderCell>总金额</Table.HeaderCell>
                           <Table.HeaderCell>订单详情</Table.HeaderCell>
                         </Table.Row>
